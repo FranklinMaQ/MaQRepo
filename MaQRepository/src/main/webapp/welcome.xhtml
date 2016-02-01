@@ -13,7 +13,6 @@
             </f:facet>
 
 
-
         </h:head>
 
         <h:body>
@@ -34,53 +33,22 @@
                     Footer
                 </p:layoutUnit>
 
-
-
                 <p:layoutUnit position="center">
-                    <h:form id="form">
-                        <p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
-                            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                                <f:facet name="header">
-                                    <h:outputText value="#{car.manufacturer}" />
-                                </f:facet>
-
-
-
-                                <h:outputText value="Year" />
-                                <h:outputText value="#{car.year}" />
-
-                                <h:outputText value="Color:" />
-                                <h:outputText value="#{car.color}" style="color:#{car.color}"/>
-
-                                <f:facet name="footer">
-                                    <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search">
-                                        <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}" />
-                                    </p:commandButton>
-                                </f:facet>
-                            </p:panelGrid>
-
-
-                        </p:carousel>
-
-                        <p:dialog header="Car Info" widgetVar="carDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
-                            <p:outputPanel id="carDetail" style="text-align:center;">
-                                <p:panelGrid  columns="2" rendered="#{not empty carouselView.selectedCar}" columnClasses="label,value">
-                                    <f:facet name="header">
-                                      
-                                    </f:facet>
-
-
-                                    <h:outputText value="Year" />
-                                    <h:outputText value="#{carouselView.selectedCar.year}" />
-
-                                    <h:outputText value="Color:" />
-                                    <h:outputText value="#{carouselView.selectedCar.color}" style="color:#{carouselView.selectedCar.color}"/>
-
-
-                                </p:panelGrid>
-                            </p:outputPanel>
-                        </p:dialog>
-                    </h:form>
+                    <!--    <ui:include src="Carousels/UzytkoweKaruzela.xhtml" />   -->
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6"><ui:include src="Carousels/UzytkoweKaruzela.xhtml" /></div>
+                            <div class="ui-grid-col-6"><ui:include src="Carousels/MultimediaKaruzela.xhtml" /></div>
+                        </div>
+                         <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">4</div>
+                            <div class="ui-grid-col-6">4</div>
+                        </div>
+                         <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">4</div>
+                            <div class="ui-grid-col-6">4</div>
+                        </div>
+                    </div>
                 </p:layoutUnit>
 
             </p:layout>
