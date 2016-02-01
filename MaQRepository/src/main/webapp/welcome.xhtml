@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Samouczek</title>
+            </f:facet>
+
+
+
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="false" closable="false" collapsible="false">
+
+                    <p:steps activeIndex="0" style="text-align:center;" styleClass="custom" widgetVar="stepy">
+                        <p:menuitem value="Personal" />
+                        <p:menuitem value="Seat Selection" />
+                        <p:menuitem value="Payment" />
+                        <p:menuitem value="Confirmation" />
+                    </p:steps>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+
+
+                <p:layoutUnit position="center">
+                    <h:form id="form">
+                        <p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
+                            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                                <f:facet name="header">
+                                    <h:outputText value="#{car.manufacturer}" />
+                                </f:facet>
+
+
+
+                                <h:outputText value="Year" />
+                                <h:outputText value="#{car.year}" />
+
+                                <h:outputText value="Color:" />
+                                <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+
+                                <f:facet name="footer">
+                                    <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search">
+                                        <f:setPropertyActionListener value="#{car}" target="#{carouselView.selectedCar}" />
+                                    </p:commandButton>
+                                </f:facet>
+                            </p:panelGrid>
+
+
+                        </p:carousel>
+
+                        <p:dialog header="Car Info" widgetVar="carDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+                            <p:outputPanel id="carDetail" style="text-align:center;">
+                                <p:panelGrid  columns="2" rendered="#{not empty carouselView.selectedCar}" columnClasses="label,value">
+                                    <f:facet name="header">
+                                      
+                                    </f:facet>
+
+
+                                    <h:outputText value="Year" />
+                                    <h:outputText value="#{carouselView.selectedCar.year}" />
+
+                                    <h:outputText value="Color:" />
+                                    <h:outputText value="#{carouselView.selectedCar.color}" style="color:#{carouselView.selectedCar.color}"/>
+
+
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
