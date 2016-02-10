@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+
+        <style>
+            .maq{
+                background-color: #FFFF00;
+            }
+        </style>
+
+    </h:head>
+    <body>
+
+
+        <ui:composition>
+
+            <p:row>
+                <p:column rowspan="2">
+                   
+                    <p:graphicImage value="#{app.icon}" />
+
+                </p:column>
+                <p:column> <h:outputText value="#{app.name}"/></p:column>
+                <p:column rowspan="2">POLE COMBO</p:column>
+            </p:row>
+            <p:row>
+                <p:column> <h:outputText value="#{app.publisher}" /></p:column>
+            </p:row>
+            <p:row>
+                <p:column colspan="2" rowspan="2"><h:outputText value="#{app.description}"/></p:column>
+                <p:column>
+                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('uzytkoweAppDialog').show()" icon="ui-icon-info">
+
+                        <c:choose>
+                            <c:when test="#{parent eq 'uzytkowe'}">
+                                <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
+                            </c:when>
+                            <c:when test="#{parent eq 'multimedia'}">
+                                <f:setPropertyActionListener value="#{app}" target="#{multimediaCarouselView.selectedApp}" />
+                            </c:when>
+                            <c:otherwise>
+                                <p>cos sie zepsulo nie bylo mnie slychac</p>
+                            </c:otherwise>
+                        </c:choose>
+                       
+                    </p:commandButton>
+                </p:column>
+            </p:row>
+            <p:row>
+                <p:column>
+                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('uzytkoweAppDialog').show()" icon="ui-icon-plus">
+                         <c:choose>
+                            <c:when test="#{parent eq 'uzytkowe'}">
+                                <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
+                            </c:when>
+                            <c:when test="#{parent eq 'multimedia'}">
+                                <f:setPropertyActionListener value="#{app}" target="#{multimediaCarouselView.selectedApp}" />
+                            </c:when>
+                            <c:otherwise>
+                                <p>cos sie zepsulo nie bylo mnie slychac</p>
+                            </c:otherwise>
+                        </c:choose>
+                    </p:commandButton>
+                </p:column>
+            </p:row>
+
+
+
+
+
+
+
+
+
+
+
+            <f:facet name="footer">
+
+            </f:facet>
+
+        </ui:composition>
+
+
+    </body>
+</html>
+
+

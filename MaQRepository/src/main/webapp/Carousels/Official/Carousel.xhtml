@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <style>
+        .ui-carousel-nav {
+            visibility: hidden;
+        }
+    </style>
+    <h:head />
+    <body>
+        
+        <ui:composition>
+             <h:form id="form_#{genre}">
+          
+                        <!--zmienna-->
+                <p:panel id="panel_#{genre}" header="Aplikacje #{genre}" style="margin-bottom:-10px">
+
+  <!-- uzytkoweCarouselView.apps-->
+                    <p:carousel value="#{genreBean.beanMap['uzytkowe']}" headerText="Responsive" var="app" itemStyle="text-align:center" responsive="true">
+                        <p:panelGrid style="width: 300px;">
+                            <ui:insert name="UzytkoweCarouselItem" >
+                                <ui:include src="Item/CarouselItem.xhtml" >
+
+                                <ui:param name="parent" value="#{genre}" />
+
+                                </ui:include>
+                            </ui:insert>
+
+                        </p:panelGrid>
+
+
+                    </p:carousel>
+
+                    <f:facet name="actions">
+                        <p:commandButton value="With Icon" icon="disk" styleClass="panel-titlebar-icon ui-corner-all ui-state-default"/>
+                     
+                        <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></h:commandLink>
+                        <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-star" /></h:commandLink>
+
+                    </f:facet>
+                </p:panel>
+
+
+
+                <p:dialog header="App Info" widgetVar="#{genre}AppDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="#{genre}AppDetail" style="text-align:center;">
+                        <p:panelGrid  columns="2" rendered="#{not empty uzytkoweCarouselView.selectedApp}" columnClasses="label,value">
+                            <f:facet name="header">
+
+                            </f:facet>
+
+
+                            <h:outputText value="Name" />
+                            <h:outputText value="#{uzytkoweCarouselView.selectedApp.name}" />
+
+                            <h:outputText value="Publisher" />
+                            <h:outputText value="#{uzytkoweCarouselView.selectedApp.publisher}"/>
+
+
+                        </p:panelGrid>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </ui:composition>
+    </body>
+</html>

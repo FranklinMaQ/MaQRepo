@@ -37,9 +37,19 @@
                     <!--    <ui:include src="Carousels/UzytkoweKaruzela.xhtml" />   -->
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
-                            <div class="ui-grid-col-6"><ui:include src="Carousels/UzytkoweKaruzela.xhtml" /></div>
-                            <div class="ui-grid-col-6"><ui:include src="Carousels/MultimediaKaruzela.xhtml" /></div>
+                            <div class="ui-grid-col-6">
+                                <ui:insert name="UzytkoweCarouselItem" >
+                                 <ui:include src="Carousels/Official/Carousel.xhtml">
+
+                                <ui:param name="genre" value="uzytkowe" />
+
+                                </ui:include>
+                                 </ui:insert>
+                            </div>
+                          
+                          
                         </div>
+                        
                          <div class="ui-grid-row">
                             <div class="ui-grid-col-6">4</div>
                             <div class="ui-grid-col-6">4</div>

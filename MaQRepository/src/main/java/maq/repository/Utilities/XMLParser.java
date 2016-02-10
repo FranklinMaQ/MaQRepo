@@ -1,8 +1,12 @@
-package maq.repository.Utils;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package maq.repository.Utilities;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import maq.repository.App.App;
@@ -11,19 +15,20 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ *
+ * @author MaQ
+ */
 public class XMLParser {
-
-   
-
+ 
     public static String getValueOfElement(Element e, String tag_name) {
         return e.getElementsByTagName(tag_name).item(0).getTextContent();
 
     }
-
-    public static ArrayList<App> ParseAppsFile(String apps_file) {
-
+    
+   
+    public static ArrayList<App> ParseFile(String apps_file) {
        
-        
         ArrayList<App> app_list = new ArrayList<App>();
         try {
 
@@ -66,10 +71,6 @@ public class XMLParser {
         }
 
         return app_list;
-    }
-
-    public static void ParseTweaksFile() {
-
-    }
-
+  }
+    
 }
