@@ -2,26 +2,21 @@
 package maq.repository.view;
 
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import maq.repository.App.App;
 import maq.repository.Interfaces.IAppsLoader;
 import maq.repository.Interfaces.ICarouselView;
+import maq.repository.InterfacesImpl.MultimediaAppsLoader;
 import maq.repository.InterfacesImpl.UzytkoweAppsLoader;
 
 
 @ManagedBean
 @ViewScoped
-public class UzytkoweCarouselView implements ICarouselView,Serializable {
+public class MultimediaCarouselView implements ICarouselView,Serializable {
      
     private ArrayList<App> apps;
     private IAppsLoader apps_loader;
@@ -34,9 +29,9 @@ public class UzytkoweCarouselView implements ICarouselView,Serializable {
         this.apps = apps;
     }
    
-    public UzytkoweCarouselView()
+    public MultimediaCarouselView()
     {
-        apps_loader = new UzytkoweAppsLoader();
+        apps_loader = new MultimediaAppsLoader();
         apps = apps_loader.LoadApps();
     }
      
@@ -44,7 +39,7 @@ public class UzytkoweCarouselView implements ICarouselView,Serializable {
     
     @PostConstruct      // do wywalenia?
     public void init() {
-        apps_loader = new UzytkoweAppsLoader();
+        apps_loader = new MultimediaAppsLoader();
         apps = apps_loader.LoadApps();
      
     }

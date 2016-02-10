@@ -22,9 +22,9 @@
                 <p:panel id="panel_#{genre}" header="Aplikacje #{genre}" style="margin-bottom:-10px">
 
   <!-- uzytkoweCarouselView.apps-->
-                    <p:carousel value="#{genreBean.beanMap['uzytkowe']}" headerText="Responsive" var="app" itemStyle="text-align:center" responsive="true">
+                    <p:carousel value="#{genreBean.beanMap[genre].apps}" headerText="Responsive" var="app" itemStyle="text-align:center" responsive="true">
                         <p:panelGrid style="width: 300px;">
-                            <ui:insert name="UzytkoweCarouselItem" >
+                            <ui:insert name="#{genre}CarouselItem" >
                                 <ui:include src="Item/CarouselItem.xhtml" >
 
                                 <ui:param name="parent" value="#{genre}" />
@@ -50,17 +50,17 @@
 
                 <p:dialog header="App Info" widgetVar="#{genre}AppDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
                     <p:outputPanel id="#{genre}AppDetail" style="text-align:center;">
-                        <p:panelGrid  columns="2" rendered="#{not empty uzytkoweCarouselView.selectedApp}" columnClasses="label,value">
+                        <p:panelGrid  columns="2" rendered="#{not empty genreBean.beanMap[genre].selectedApp}" columnClasses="label,value">
                             <f:facet name="header">
 
                             </f:facet>
 
 
                             <h:outputText value="Name" />
-                            <h:outputText value="#{uzytkoweCarouselView.selectedApp.name}" />
+                            <h:outputText value="#{genreBean.beanMap[genre].selectedApp.name}" />
 
                             <h:outputText value="Publisher" />
-                            <h:outputText value="#{uzytkoweCarouselView.selectedApp.publisher}"/>
+                            <h:outputText value="#{genreBean.beanMap[genre].selectedApp.publisher}" />
 
 
                         </p:panelGrid>

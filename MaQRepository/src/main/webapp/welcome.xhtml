@@ -38,11 +38,16 @@
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-6">
-                                <ui:insert name="UzytkoweCarouselItem" >
+                                <ui:insert name="uzytkoweCarousel" >
                                  <ui:include src="Carousels/Official/Carousel.xhtml">
-
                                 <ui:param name="genre" value="uzytkowe" />
-
+                                </ui:include>
+                                 </ui:insert>
+                            </div>
+                              <div class="ui-grid-col-6">
+                                <ui:insert name="multimediaCarousel" >
+                                 <ui:include src="Carousels/Official/Carousel.xhtml">
+                                <ui:param name="genre" value="multimedia" />
                                 </ui:include>
                                  </ui:insert>
                             </div>

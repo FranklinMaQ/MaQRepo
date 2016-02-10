@@ -6,9 +6,6 @@ import maq.repository.App.App;
 
 public interface IAppsLoader {
   
-    /**
-     *
-     * @return
-     */
+  
     public ArrayList<App> LoadApps();  
 }

@@ -5,12 +5,12 @@
  */
 package maq.repository.view;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import maq.repository.App.App;
+import javax.faces.context.FacesContext;
+import maq.repository.Interfaces.ICarouselView;
 
 /**
  *
@@ -18,21 +18,36 @@ import maq.repository.App.App;
  */
 @ManagedBean
 @RequestScoped
-public class GenreBean{
-  private HashMap<String, ArrayList<App>> beanMap;
-  //setter + getters
 
-    public HashMap<String, ArrayList<App>> getbeanMap() {
+public class GenreBean{
+  private HashMap<String, ICarouselView> beanMap;
+  
+ 
+  //setter + getters
+  
+  public static Object getBean(String beanName){
+    Object bean = null;
+    FacesContext fc = FacesContext.getCurrentInstance();
+    if(fc!=null){
+         ELContext elContext = fc.getELContext();
+         bean = elContext.getELResolver().getValue(elContext, null, beanName);
+    }
+
+    return bean;
+}
+
+    public HashMap<String, ICarouselView> getbeanMap() {
         return beanMap;
     }
 
-    public void setbeanMap(HashMap<String, ArrayList<App>> beanMap) {
+    public void setbeanMap(HashMap<String, ICarouselView> beanMap) {
         this.beanMap = beanMap;
     }
 
     public GenreBean() {
-        this.beanMap = new HashMap<String, ArrayList<App>>();
-        beanMap.put("uzytkowe", new UzytkoweCarouselView().getApps());
+        beanMap = new HashMap<String, ICarouselView>();
+        beanMap.put("uzytkowe", (UzytkoweCarouselView)getBean("uzytkoweCarouselView"));
+        beanMap.put("multimedia", (MultimediaCarouselView)getBean("multimediaCarouselView"));
       //   beanMap.put("multimedia", "#{multimediaCarouselView.apps}");
         
     }

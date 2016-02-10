@@ -5,15 +5,8 @@
  */
 package maq.repository.InterfacesImpl;
 
-import java.io.File;
 import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import maq.repository.App.App;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import maq.repository.Interfaces.IAppsLoader;
 import maq.repository.Utilities.XMLParser;
 
@@ -21,9 +14,9 @@ import maq.repository.Utilities.XMLParser;
  *
  * @author MaQ
  */
-public class UzytkoweAppsLoader implements IAppsLoader {
+public class MultimediaAppsLoader implements IAppsLoader {
 
-    private String apps_file = "C:\\Users\\MaQ\\Desktop\\xml\\uzytkowe.xml";
+    private String apps_file = "C:\\Users\\MaQ\\Desktop\\xml\\multimedia.xml";
 
     @Override
     public ArrayList<App> LoadApps() {      
@@ -32,7 +25,6 @@ public class UzytkoweAppsLoader implements IAppsLoader {
         return XMLParser.ParseFile(apps_file);
         
     }
-    
+}
     
 
-}
