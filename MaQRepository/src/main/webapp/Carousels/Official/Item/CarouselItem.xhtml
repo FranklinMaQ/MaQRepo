@@ -35,7 +35,7 @@
             <p:row>
                 <p:column colspan="2" rowspan="2"><h:outputText value="#{app.description}"/></p:column>
                 <p:column>
-                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('uzytkoweAppDialog').show()" icon="ui-icon-info">
+                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('#{parent}AppDialog').show()" icon="ui-icon-info">
 
                         <c:choose>
                             <c:when test="#{parent eq 'uzytkowe'}">
@@ -54,7 +54,7 @@
             </p:row>
             <p:row>
                 <p:column>
-                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('uzytkoweAppDialog').show()" icon="ui-icon-plus">
+                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('#{parent}AppDialog').show()" icon="ui-icon-plus">
                          <c:choose>
                             <c:when test="#{parent eq 'uzytkowe'}">
                                 <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
