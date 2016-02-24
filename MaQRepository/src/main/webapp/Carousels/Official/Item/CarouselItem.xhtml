@@ -23,7 +23,7 @@
             <p:row>
                 <p:column rowspan="2">
                    
-                    <p:graphicImage value="#{app.icon}" />
+                    <p:graphicImage value="#{app.icon}" style="weight: 70px; height: 70px;" />
 
                 </p:column>
                 <p:column> <h:outputText value="#{app.name}"/></p:column>
@@ -54,7 +54,7 @@
             </p:row>
             <p:row>
                 <p:column>
-                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="PF('#{parent}AppDialog').show()" icon="ui-icon-plus">
+                    <p:commandButton action="#{orderListBean.insert(app)}" update=":form_koszyk" icon="ui-icon-plus">
                          <c:choose>
                             <c:when test="#{parent eq 'uzytkowe'}">
                                 <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />

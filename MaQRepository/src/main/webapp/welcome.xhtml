@@ -29,8 +29,18 @@
                     </p:steps>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                <p:layoutUnit position="south" size="350" closable="true" collapsible="true">
+                    
+                    <!--
+                    <p:dock id="paneldrag">                        
+                        <p:menuitem id="menuitem1" value="Home" icon="/images/winamp.png" url="#">
+                              <p:draggable for="menuitem1" />
+                        </p:menuitem>
+                        <p:menuitem id="menuitem2" value="Music" icon="/images/winamp.png" url="#">
+                             <p:draggable for="menuitem2" />
+                        </p:menuitem>
+                    </p:dock>
+                    -->
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
@@ -39,27 +49,27 @@
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-6">
                                 <ui:insert name="uzytkoweCarousel" >
-                                 <ui:include src="Carousels/Official/Carousel.xhtml">
-                                <ui:param name="genre" value="uzytkowe" />
-                                </ui:include>
-                                 </ui:insert>
+                                    <ui:include src="Carousels/Official/Carousel.xhtml">
+                                        <ui:param name="genre" value="uzytkowe" />
+                                    </ui:include>
+                                </ui:insert>
                             </div>
-                              <div class="ui-grid-col-6">
+                            <div class="ui-grid-col-6">
                                 <ui:insert name="multimediaCarousel" >
-                                 <ui:include src="Carousels/Official/Carousel.xhtml">
-                                <ui:param name="genre" value="multimedia" />
-                                </ui:include>
-                                 </ui:insert>
+                                    <ui:include src="Carousels/Official/Carousel.xhtml">
+                                        <ui:param name="genre" value="multimedia" />
+                                    </ui:include>
+                                </ui:insert>
                             </div>
-                          
-                          
+
+
                         </div>
-                        
-                         <div class="ui-grid-row">
+
+                        <div class="ui-grid-row">
                             <div class="ui-grid-col-6">4</div>
                             <div class="ui-grid-col-6">4</div>
                         </div>
-                         <div class="ui-grid-row">
+                        <div class="ui-grid-row">
                             <div class="ui-grid-col-6">4</div>
                             <div class="ui-grid-col-6">4</div>
                         </div>

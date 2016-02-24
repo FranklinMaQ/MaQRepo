@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <style>
+        .ui-carousel-nav {
+            visibility: hidden;
+        }
+    </style>
+    <h:head />
+    <body>
+        
+        <ui:composition>
+             <h:form id="form_#{genre}">
+          
+                        <!--zmienna-->
+                <p:panel id="panel_#{genre}" header="Aplikacje #{genre}" style="margin-bottom:-10px">
+
+  <!-- uzytkoweCarouselView.apps-->
+                    <p:carousel value="#{genreBean.beanMap[genre].apps}" headerText="Responsive" var="app" itemStyle="text-align:center" responsive="false" style="width: 1000px;">
+                        <p:panelGrid id="#{genre}_panelitem" >
+                            <ui:insert name="#{genre}CarouselItem" >
+                                <ui:include src="Item/CarouselItem.xhtml" >
+
+                                <ui:param name="parent" value="#{genre}" />
+
+                                </ui:include>
+                            </ui:insert>
+
+                        </p:panelGrid>
+                      
+
+
+
+                    </p:carousel>
+
+                    <f:facet name="actions">
+                        <p:commandButton value="With Icon" icon="disk" styleClass="panel-titlebar-icon ui-corner-all ui-state-default"/>
+                     
+                        <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></h:commandLink>
+                        <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-star" /></h:commandLink>
+
+                    </f:facet>
+                </p:panel>
+
+
+
+                        <p:dialog header="App Info" widgetVar="#{genre}AppDialog" modal="false" draggable="false" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="#{genre}AppDetail" style="text-align:center;">
+                        <p:panelGrid  columns="3" rendered="#{not empty genreBean.beanMap[genre].selectedApp}" >
+                            <f:facet name="header">
+                                    Informacje o aplikacji
+                            </f:facet>
+
+
+                            <h:outputText value="Name" />
+                            <h:outputText value="#{genreBean.beanMap[genre].selectedApp.name}" />
+
+                            <h:outputText value="Publisher" />
+                            <h:outputText value="#{genreBean.beanMap[genre].selectedApp.publisher}" />
+
+
+                        </p:panelGrid>
+                    </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </ui:composition>
+    </body>
+</html>

@@ -1,3 +1,5 @@
+package maq.repository.view;
+
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -13,7 +15,7 @@ import org.primefaces.model.DashboardModel;
 import org.primefaces.model.DefaultDashboardColumn;
 import org.primefaces.model.DefaultDashboardModel;
  
-@ManagedBean
+@ManagedBean(name = "dashboardView")
 @ViewScoped
 public class DashboardView implements Serializable {
      
@@ -27,12 +29,12 @@ public class DashboardView implements Serializable {
         DashboardColumn column3 = new DefaultDashboardColumn();
          
         column1.addWidget("sports");
-        column1.addWidget("finance");
+      //  column1.addWidget("finance");
          
-        column2.addWidget("lifestyle");
-        column2.addWidget("weather");
+      
+    //    column2.addWidget("weather");
          
-        column3.addWidget("politics");
+    //    column3.addWidget("politics");
  
         model.addColumn(column1);
         model.addColumn(column2);
