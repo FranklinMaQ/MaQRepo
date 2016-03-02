@@ -23,7 +23,7 @@ import maq.repository.Utilities.XMLParser;
  */
 public class UzytkoweAppsLoader implements IAppsLoader {
 
-    private String apps_file = "C:\\Users\\MaQ\\Desktop\\xml\\uzytkowe.xml";
+    private String apps_file = "C:\\xml\\uzytkowe.xml";
 
     @Override
     public ArrayList<App> LoadApps() {      

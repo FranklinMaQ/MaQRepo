@@ -55,7 +55,7 @@
                         document.getElementById("header").className = "";
 
                     }, 2000);
-          //
+                    //
 
                 }
             </script>
@@ -71,9 +71,16 @@
 
 
             <p:dialog header="App Info" styleClass="ui-page-theme-a ui-bar-inherit" id="Dialog1" widgetVar="dlg2" modal="false" width="630" height="435" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false">
-                    <p:graphicImage value="images/tutorial/1.PNG" />
-                    <p:graphicImage value="images/tutorial/2.PNG" />
+                <p:imageSwitch id="images" effect="scrollLeft" widgetVar="gallery" slideshowAuto="false">
+                    <p:graphicImage value="images/tutorial/1.png" />
+                    <p:graphicImage value="images/tutorial/2.png" />
+                    <p:graphicImage value="images/tutorial/3.png" />
+                    <p:graphicImage value="images/tutorial/4.png" />
+                    <p:graphicImage value="images/tutorial/5.png" />
+                    <p:graphicImage value="images/tutorial/6.png" />
+                    <p:graphicImage value="images/tutorial/7a.png" />
+                    <p:graphicImage value="images/tutorial/8.png" />
+                    <p:graphicImage value="images/tutorial/9.png" />
 
                 </p:imageSwitch>
 
@@ -81,16 +88,17 @@
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4">  <p:commandButton onclick="HideTutorial()" id="btn_cloe" value="Zamknij" type="button"/></div>
                         <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);PF('gallery').previous();
-                        void(0);" id="btn_prev" value="Cofnij" type="button"/></div>
+                                void(0);" id="btn_prev" value="Cofnij" type="button"/></div>
                         <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);
-                        PF('gallery').next();void(0);" id="btn_next" value="Dalej" type="button"/></div>
+                                PF('gallery').next();
+                                void(0);" id="btn_next" value="Dalej" type="button"/></div>
                     </div>
                 </div>
 
 
-               
-               
-              
+
+
+
 
 
 
@@ -116,7 +124,7 @@
                 <p:layoutUnit position="east" size="140" collapsible="false">
                     <div id="div_koszyk">
                         <h:form id="form_koszyk">
- <!-- <p:growl id="msgs" showDetail="true" /> -->
+
                             <p:contextMenu for="cart_apps">
                                 <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}"/>
                             </p:contextMenu>
@@ -126,15 +134,16 @@
                             -->
                             <p:dataTable id="cart_apps" var="cart_app" value="#{orderListBean.apps}" 
                                          draggableRows="true" selection="#{orderListBean.selectedApp}" rowKey="#{cart_app.name}" selectionMode="single">
-                                 <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk" />
+                                <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk" />
                                 <f:facet name="header">
                                     Koszyk
                                 </f:facet>
 
 
 
-                                <p:column>
+                                <p:column style="text-align: center;">
                                     <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
+                                    <p:graphicImage  value="/images/separator.png" />
 
                                 </p:column>
                             </p:dataTable> 
@@ -183,7 +192,7 @@
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-12">
 
-                              
+
 
                             </div>
                         </div>

@@ -16,7 +16,7 @@ import maq.repository.Utilities.XMLParser;
  */
 public class MultimediaAppsLoader implements IAppsLoader {
 
-    private String apps_file = "C:\\Users\\MaQ\\Desktop\\xml\\multimedia.xml";
+    private String apps_file = "C:\\xml\\multimedia.xml";
 
     @Override
     public ArrayList<App> LoadApps() {      

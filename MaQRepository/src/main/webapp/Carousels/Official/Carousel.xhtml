@@ -58,10 +58,12 @@
 
 
                             <img src="#{genreBean.beanMap[genre].selectedApp.icon}" alt="Nettuts+ Logo" style="-webkit-filter: blur(30px); width: 400px; height: 400px; "/>
-                            <mydiv style=" position: absolute; left:140px; top:70px; background-color:rgba(0,0,0,0.1); color: white; font-size: 26pt;">#{genreBean.beanMap[genre].selectedApp.name}</mydiv> 
-                            <mydiv style=" position: absolute; left:140px; top:140px; background-color:rgba(0,0,0,0.1); color: white; font-size: 22pt;">#{genreBean.beanMap[genre].selectedApp.publisher}</mydiv> 
+                            <mydiv style = "position: absolute; left: 30px; top: 60px; "><img src="#{genreBean.beanMap[genre].selectedApp.icon}" style="width: 128px; height: 128px;"/></mydiv>
+                            <mydiv style=" position: absolute; left:180px; top:70px; background-color:rgba(0,0,0,0.1); color: white; font-size: 26pt;">#{genreBean.beanMap[genre].selectedApp.name}</mydiv> 
+                            <mydiv style=" position: absolute; left:180px; top:140px; background-color:rgba(0,0,0,0.1); color: white; font-size: 22pt;">#{genreBean.beanMap[genre].selectedApp.publisher}</mydiv> 
+                            <mydiv style=" width: 370px; height: 100px; position: absolute; left:30px; top:240px; background-color:rgba(0,0,0,0.05); color: white; font-size: 16pt;">#{genreBean.beanMap[genre].selectedApp.description}</mydiv> 
 
-                            <mydiv style=" position: absolute; right:140px; bottom:10px;"> <p:commandButton onclick='PF("#{genre}AppDialog").hide(); document.getElementById("MyElement").className = "";' id="hide" value="Zamknij" type="button"/></mydiv>
+                            <mydiv style=" position: absolute; right:160px; bottom:10px;"> <p:commandButton onclick='PF("#{genre}AppDialog").hide(); document.getElementById("MyElement").className = "";' id="hide" value="Zamknij" type="button"/></mydiv>
 
 
 
