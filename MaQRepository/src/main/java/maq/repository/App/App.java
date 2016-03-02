@@ -13,6 +13,7 @@ public class App implements Serializable{
     private String icon;
     private Map<String, String> linki = new HashMap<String, String>();
     private String homepage;
+    private int orderId;
 
  
     private String category;

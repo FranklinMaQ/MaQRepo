@@ -1,4 +1,76 @@
-#mydiv
+#header
 {
-    background-color: #FF0000;
+    background-color: #0277BD;
+    text-align: center;
+}
+
+.ui-panel {
+    background-color: rgba(r,g,b,a) !important;
+}
+
+.noBorder tr,
+.noBorder td { border: 0 !important; }
+
+.transparentBackground tr,
+.transparentBackground td { background: transparent !important; }
+
+.myblurrybackground
+{
+    -webkit-filter: blur(10px);
+}
+
+.ui-datatable-empty-message {
+    display: none;
+}
+
+.ui-top, .ui-top .ui-layout, .ui-top .ui-layout-bd, .ui-top .ui-layout-unit {
+    background-image: none!important;
+    background-color: #0277BD!important; 
+}
+
+.ui-panelgrid td, .ui-panelgrid tr
+{
+    border-style: hidden !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0 !important;
+    display: none !important;
+
+
+}
+
+#Dialog1.ui-dialog.ui-widget-content {
+    background-image: none;
+    background-color: #0277BD;
+    opacity: 0.9 !important;
+}
+
+.ui-carousel-header {
+    background-color: #0277BD !important;
+
+}
+
+.ui-carousel-header-title
+{
+    color: darkblue !important;
+    text-shadow: 0px !important;
+}
+
+.ui-carousel-button ui-carousel-prev-button ui-icon ui-icon-circle-triangle-w
+{
+    opacity: 0.4 !important;
+
+}
+
+.top {
+    filter:alpha(opacity=80);
+    opacity:0.8;
+    padding:50px 0 0 50px;
+    z-index: 1000;
+    height: 11px;
+}
+
+.panelGridCenter {
+    margin: 0 auto;
 }

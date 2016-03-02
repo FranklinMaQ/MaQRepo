@@ -3,59 +3,150 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:pm="http://primefaces.org/mobile">
+
+
 
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                
-              <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
 
-                
+                <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
+                <h:outputStylesheet library="default" name="css/mystyle.css" />
+
+                <script src="css/script.js"></script>
+
                 <title>PrimeFaces</title>
             </f:facet>
-            
-           
-            
+
+            <script>
+                function ShowTutorial() {
+
+
+
+                    document.getElementById("MyElement").className = "myblurrybackground";
+                    document.getElementById("header").className = "myblurrybackground";
+                    document.getElementById("layek").className = "myblurrybackground";
+                    document.getElementById("div_koszyk").className = "myblurrybackground";
+                    PF("dlg2").show();
+
+                }
+
+                function HideTutorial()
+                {
+                    void(0);
+                    PF('dlg2').hide();
+                    document.getElementById('MyElement').className = '';
+                    document.getElementById('div_koszyk').className = '';
+                    document.getElementById('layek').className = '';
+                    document.getElementById('header').className = '';
+                    void(0);
+                }
+
+                function ShowSuccessNotification()
+                {
+
+                    PF('bar').show();
+                    document.getElementById("header").className = "myblurrybackground";
+
+                    setTimeout(function () {
+                        PF('bar').hide();
+                        document.getElementById("header").className = "";
+
+                    }, 2000);
+          //
+
+                }
+            </script>
+
         </h:head>
 
-        <h:body>
+        <h:body onload="ShowTutorial()">
+
+
+            <p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar" style="height: 65px;">
+                <h:outputText value="Dodano aplikację do koszyka!" style="font-size:36px;" />
+            </p:notificationBar>
+
+
+            <p:dialog header="App Info" styleClass="ui-page-theme-a ui-bar-inherit" id="Dialog1" widgetVar="dlg2" modal="false" width="630" height="435" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false">
+                    <p:graphicImage value="images/tutorial/1.PNG" />
+                    <p:graphicImage value="images/tutorial/2.PNG" />
+
+                </p:imageSwitch>
+
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4">  <p:commandButton onclick="HideTutorial()" id="btn_cloe" value="Zamknij" type="button"/></div>
+                        <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);PF('gallery').previous();
+                        void(0);" id="btn_prev" value="Cofnij" type="button"/></div>
+                        <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);
+                        PF('gallery').next();void(0);" id="btn_next" value="Dalej" type="button"/></div>
+                    </div>
+                </div>
+
+
+               
+               
+              
+
+
+
+            </p:dialog>  
 
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    <div id="mydiv">TEST</div>
+
+
+
+                <p:layoutUnit id="layek" position="north" size="110" gutter="0"  styleClass="ui-top" resizable="true" closable="true" collapsible="true">
+                    <div id="header">
+
+
+                        <img src="images/logo.PNG" width="294" height="74" alt="logo"/>
+
+                    </div>
+
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
+
 
                 <p:layoutUnit position="east" size="140" collapsible="false">
-                    <h:form id="form_koszyk">
-                        <p:growl id="msgs" showDetail="true" />
-                        <p:dataTable widgetVar="koszyk" var="app" value="#{orderListBean.apps}" draggableRows="true">
-                            <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk:msgs" />
-
-                            <p:column headerText="Koszyk">
-                                <p:graphicImage value="#{app.icon}" style="weight: 128px; height: 100px;" />
-                                <br />
-                                <p:commandButton id="infobtn" value="Show" icon="ui-icon-script"  update=":form_koszyk" />
-                                <p:overlayPanel id="imagePanel" for="infobtn" hideEffect="fade">
-                                    <p:graphicImage value="#{app.icon}" />
-                                </p:overlayPanel>
-                            </p:column>
+                    <div id="div_koszyk">
+                        <h:form id="form_koszyk">
+ <!-- <p:growl id="msgs" showDetail="true" /> -->
+                            <p:contextMenu for="cart_apps">
+                                <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}"/>
+                            </p:contextMenu>
 
 
-                        </p:dataTable>
-                    </h:form>
+                            <!--   <p:tooltip id="toolTipTrack" for="cart_apps" value="TEst" trackMouse="true" />
+                            -->
+                            <p:dataTable id="cart_apps" var="cart_app" value="#{orderListBean.apps}" 
+                                         draggableRows="true" selection="#{orderListBean.selectedApp}" rowKey="#{cart_app.name}" selectionMode="single">
+                                 <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk" />
+                                <f:facet name="header">
+                                    Koszyk
+                                </f:facet>
+
+
+
+                                <p:column>
+                                    <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
+
+                                </p:column>
+                            </p:dataTable> 
+
+                        </h:form>
+                    </div>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
 
-<!--style=" -webkit-filter: blur(2px);"-->
-                    <div class="ui-grid ui-grid-responsive">
+                    <!--style=" -webkit-filter: blur(2px);"-->
+                    <div class="ui-grid ui-grid-responsive" id='MyElement'>
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-1">
                             </div>
@@ -63,6 +154,7 @@
 
                                 <ui:insert name="uzytkoweCarousel" >
                                     <ui:include src="Carousels/Official/Carousel.xhtml">
+                                        <ui:param name="title" value="Aplikacje użytkowe" />
                                         <ui:param name="genre" value="uzytkowe" />
                                     </ui:include>
                                 </ui:insert>
@@ -79,6 +171,7 @@
 
                                 <ui:insert name="multimediaCarousel" >
                                     <ui:include src="Carousels/Official/Carousel.xhtml">
+                                        <ui:param name="title" value="Aplikacje multimedialne" />
                                         <ui:param name="genre" value="multimedia" />
                                     </ui:include>
                                 </ui:insert>
@@ -90,15 +183,7 @@
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-12">
 
-                                <p:ring widgetVar="ryng" value="#{orderListBean.apps}" var="app" >
-                                    <p:column>
-                                        <p:graphicImage value="#{app.icon}"/>
-                                    </p:column>
-                                    <p:column>
-                                        Test
-                                    </p:column>
-
-                                </p:ring>
+                              
 
                             </div>
                         </div>

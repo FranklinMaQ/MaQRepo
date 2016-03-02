@@ -14,6 +14,8 @@
             }
         </style>
 
+        
+        
     </h:head>
     <body>
 
@@ -54,7 +56,7 @@
             </p:row>
             <p:row>
                 <p:column>
-                    <p:commandButton action="#{orderListBean.insert(app)}" update=":form_koszyk" icon="ui-icon-plus">
+                    <p:commandButton action="#{orderListBean.insert(app)}" update=":form_koszyk" oncomplete="ShowSuccessNotification()" icon="ui-icon-plus">
                          <c:choose>
                             <c:when test="#{parent eq 'uzytkowe'}">
                                 <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
