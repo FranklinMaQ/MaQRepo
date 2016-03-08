@@ -7,30 +7,35 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-  
-    <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                
-              <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
 
-                
-                <title>PrimeFaces</title>
-            </f:facet>
-            
-           
-            
-        </h:head>
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+
+            <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
+
+
+            <title>PrimeFaces</title>
+        </f:facet>
+
+
+
+    </h:head>
     <body>
 
 
 
         <ui:composition>
-            <div align="center">
-            <h:form id="form_#{genre}">
 
-                <!--zmienna-->
-                 <!-- uzytkoweCarouselView.apps-->
+
+
+
+            <h:form id="form_#{genre}">
+                <div align="center" id='#{genre}DivKaruzela'>
+
+
+                    <!--zmienna-->
+                    <!-- uzytkoweCarouselView.apps-->
                     <p:carousel value="#{genreBean.beanMap[genre].apps}" headerText="#{title}" var="app" itemStyle="text-align:center" responsive="false" style="width: 850px;">
                         <p:panelGrid id="#{genre}_panelitem" >
                             <ui:insert name="#{genre}CarouselItem" >
@@ -48,32 +53,49 @@
 
                     </p:carousel>
 
-          
+                    <p:fieldset widgetVar="#{genre}Fieldset" legend="Pokaż więcej aplikacji" collapsed="true" toggleable="true" toggleSpeed="200" styleClass="myFieldset">
+                        <p:ajax event="toggle"/>
+
+                        <p:dataGrid var="car" value="#{genreBean.beanMap[genre].apps}" columns="3" layout="grid"
+                                    rows="12" paginator="true" id="cars"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,12,16">
 
 
-                <p:dialog header="App Info" widgetVar="#{genre}AppDialog" modal="false" draggable="false" showEffect="fade" hideEffect="fade" resizable="false">
+
+                        </p:dataGrid>
+
+                    </p:fieldset>
+
+                </div>
+
+
+                <p:dialog header="App Info" widgetVar="#{genre}AppDialog"  modal="false" draggable="false" showEffect="fade" hideEffect="fade" resizable="false" style="border-color: lightblue; border-width: 1px;  background:rgba(255,255,255,0.2) !important;">
 
                     <p:outputPanel id="#{genre}AppDetail" style="text-align:center;">
                         <p:panelGrid rendered="#{not empty genreBean.beanMap[genre].selectedApp}" >
 
 
-                            <img src="#{genreBean.beanMap[genre].selectedApp.icon}" alt="Nettuts+ Logo" style="-webkit-filter: blur(30px); width: 400px; height: 400px; "/>
+                            <img src="#{genreBean.beanMap[genre].selectedApp.icon}" alt="Nettuts+ Logo" style="-webkit-filter: blur(30px);  width: 400px; height: 400px; "/>
                             <mydiv style = "position: absolute; left: 30px; top: 60px; "><img src="#{genreBean.beanMap[genre].selectedApp.icon}" style="width: 128px; height: 128px;"/></mydiv>
                             <mydiv style=" position: absolute; left:180px; top:70px; background-color:rgba(0,0,0,0.1); color: white; font-size: 26pt;">#{genreBean.beanMap[genre].selectedApp.name}</mydiv> 
                             <mydiv style=" position: absolute; left:180px; top:140px; background-color:rgba(0,0,0,0.1); color: white; font-size: 22pt;">#{genreBean.beanMap[genre].selectedApp.publisher}</mydiv> 
                             <mydiv style=" width: 370px; height: 100px; position: absolute; left:30px; top:240px; background-color:rgba(0,0,0,0.05); color: white; font-size: 16pt;">#{genreBean.beanMap[genre].selectedApp.description}</mydiv> 
 
-                            <mydiv style=" position: absolute; right:160px; bottom:10px;"> <p:commandButton onclick='PF("#{genre}AppDialog").hide(); document.getElementById("MyElement").className = "";' id="hide" value="Zamknij" type="button"/></mydiv>
+                            <mydiv style=" position: absolute; right:160px; bottom:10px;"> <p:commandButton icon="ui-icon-close" styleClass="klawiszClose" onclick='PF("#{genre}AppDialog").hide(); BackgroundUnBlur();' id="hide" value="Zamknij" type="button" /></mydiv>
 
 
 
-                           
+
                         </p:panelGrid>
                     </p:outputPanel>
 
                 </p:dialog>
+
+
+
             </h:form>
-                </div>
+
         </ui:composition>
     </body>
 </html>

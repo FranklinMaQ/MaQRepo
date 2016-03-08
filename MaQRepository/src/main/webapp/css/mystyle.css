@@ -48,6 +48,7 @@
 
 .ui-carousel-header {
     background-color: #0277BD !important;
+   
 
 }
 
@@ -63,6 +64,13 @@
 
 }
 
+.ui-icon-plusthick
+{
+     display: none !important;
+}
+
+
+
 .top {
     filter:alpha(opacity=80);
     opacity:0.8;
@@ -73,4 +81,27 @@
 
 .panelGridCenter {
     margin: 0 auto;
+}
+
+myFieldset .ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+background-color: transparent !important;
+border-color: lightblue !important;
+border-radius: 10px;
+
+}
+
+myFieldset .ui-fieldset, .ui-fieldset {
+background-color: transparent !important;
+border-color: transparent !important;
+
+
+}
+
+.klawiszClose
+{
+    background-color: transparent !important;
+border-color: transparent !important;
+border: 0 !important;
+border-style: none !important;
+
 }

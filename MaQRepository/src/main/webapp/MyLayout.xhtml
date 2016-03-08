@@ -21,14 +21,27 @@
             </f:facet>
 
             <script>
-                function ShowTutorial() {
-
-
-
-                    document.getElementById("MyElement").className = "myblurrybackground";
+                
+                function BackgroundBlur()
+                {
+                    document.getElementById("uzytkoweDivKaruzela").className = "myblurrybackground";
+                    document.getElementById("multimediaDivKaruzela").className = "myblurrybackground";
                     document.getElementById("header").className = "myblurrybackground";
                     document.getElementById("layek").className = "myblurrybackground";
                     document.getElementById("div_koszyk").className = "myblurrybackground";
+                }
+                
+                 function BackgroundUnBlur()
+                {
+                    document.getElementById("uzytkoweDivKaruzela").className = "";
+                    document.getElementById("multimediaDivKaruzela").className = "";
+                    document.getElementById("header").className = "";
+                    document.getElementById("layek").className = "";
+                    document.getElementById("div_koszyk").className = "";
+                }
+                
+                function ShowTutorial() {
+                    BackgroundBlur();
                     PF("dlg2").show();
 
                 }
@@ -37,10 +50,7 @@
                 {
                     void(0);
                     PF('dlg2').hide();
-                    document.getElementById('MyElement').className = '';
-                    document.getElementById('div_koszyk').className = '';
-                    document.getElementById('layek').className = '';
-                    document.getElementById('header').className = '';
+                    BackgroundUnBlur();
                     void(0);
                 }
 
@@ -107,7 +117,7 @@
             <p:layout fullPage="true">
 
 
-
+               
 
                 <p:layoutUnit id="layek" position="north" size="110" gutter="0"  styleClass="ui-top" resizable="true" closable="true" collapsible="true">
                     <div id="header">
@@ -116,17 +126,24 @@
                         <img src="images/logo.PNG" width="294" height="74" alt="logo"/>
 
                     </div>
+                    
+                    
 
                 </p:layoutUnit>
 
 
 
-                <p:layoutUnit position="east" size="140" collapsible="false">
+                <p:layoutUnit position="east" size="145" collapsible="false">
                     <div id="div_koszyk">
                         <h:form id="form_koszyk">
 
-                            <p:contextMenu for="cart_apps">
-                                <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}"/>
+                            <h:commandLink value="Save">
+             
+                <p:dataExporter type="xml" target="cart_apps" fileName="apki" />
+            </h:commandLink>
+                            
+                            <p:contextMenu for="cart_apps" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
+                                <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}" />
                             </p:contextMenu>
 
 
@@ -141,11 +158,29 @@
 
 
 
-                                <p:column style="text-align: center;">
-                                    <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
+                              
+                                
+                                <p:column style="text-align: center;" exportable="false" width="110px;">
+                                     <f:facet name="header">
+                                          <h:outputText value="icon"/>
+                                     </f:facet>
+                                   
+                                     <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
                                     <p:graphicImage  value="/images/separator.png" />
 
                                 </p:column>
+                                
+                                
+                                 <p:column style="text-align: center; visibility: hidden;">
+                                     <f:facet name="header">
+                                          <h:outputText value="name"/>
+                                     </f:facet>
+                                   
+                                     <h:outputText value="#{cart_app.name}" />
+
+                                </p:column>
+                                
+                                
                             </p:dataTable> 
 
                         </h:form>
@@ -155,12 +190,7 @@
                 <p:layoutUnit position="center">
 
                     <!--style=" -webkit-filter: blur(2px);"-->
-                    <div class="ui-grid ui-grid-responsive" id='MyElement'>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-1">
-                            </div>
-                            <div class="ui-grid-col-12">
-
+                 
                                 <ui:insert name="uzytkoweCarousel" >
                                     <ui:include src="Carousels/Official/Carousel.xhtml">
                                         <ui:param name="title" value="Aplikacje użytkowe" />
@@ -168,16 +198,7 @@
                                     </ui:include>
                                 </ui:insert>
 
-                            </div>
-                            <div class="ui-grid-col-1">
-                            </div>
-                        </div>
-
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-1">
-                            </div>
-                            <div class="ui-grid-col-12">
-
+                          
                                 <ui:insert name="multimediaCarousel" >
                                     <ui:include src="Carousels/Official/Carousel.xhtml">
                                         <ui:param name="title" value="Aplikacje multimedialne" />
@@ -185,18 +206,9 @@
                                     </ui:include>
                                 </ui:insert>
 
-                            </div>
-                            <div class="ui-grid-col-1">
-                            </div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-12">
-
-
-
-                            </div>
-                        </div>
-                    </div>
+                         
+                 
+                    
                 </p:layoutUnit>
 
             </p:layout>
