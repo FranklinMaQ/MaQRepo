@@ -11,76 +11,28 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-
                 <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
-                <h:outputStylesheet library="default" name="css/mystyle.css" />
-
-                <script src="css/script.js"></script>
-
-                <title>PrimeFaces</title>
+                <script type="text/javascript" src="css/script.js"></script>
+                <title>MaQ Repository</title>
             </f:facet>
 
             <script>
                 
-                function BackgroundBlur()
-                {
-                    document.getElementById("uzytkoweDivKaruzela").className = "myblurrybackground";
-                    document.getElementById("multimediaDivKaruzela").className = "myblurrybackground";
-                    document.getElementById("header").className = "myblurrybackground";
-                    document.getElementById("layek").className = "myblurrybackground";
-                    document.getElementById("div_koszyk").className = "myblurrybackground";
-                }
-                
-                 function BackgroundUnBlur()
-                {
-                    document.getElementById("uzytkoweDivKaruzela").className = "";
-                    document.getElementById("multimediaDivKaruzela").className = "";
-                    document.getElementById("header").className = "";
-                    document.getElementById("layek").className = "";
-                    document.getElementById("div_koszyk").className = "";
-                }
-                
-                function ShowTutorial() {
-                    BackgroundBlur();
-                    PF("dlg2").show();
-
-                }
-
-                function HideTutorial()
-                {
-                    void(0);
-                    PF('dlg2').hide();
-                    BackgroundUnBlur();
-                    void(0);
-                }
-
-                function ShowSuccessNotification()
-                {
-
-                    PF('bar').show();
-                    document.getElementById("header").className = "myblurrybackground";
-
-                    setTimeout(function () {
-                        PF('bar').hide();
-                        document.getElementById("header").className = "";
-
-                    }, 2000);
-                    //
-
-                }
+              
             </script>
 
         </h:head>
 
         <h:body onload="ShowTutorial()">
 
-
+          
+            
             <p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar" style="height: 65px;">
                 <h:outputText value="Dodano aplikację do koszyka!" style="font-size:36px;" />
             </p:notificationBar>
 
 
-            <p:dialog header="App Info" styleClass="ui-page-theme-a ui-bar-inherit" id="Dialog1" widgetVar="dlg2" modal="false" width="630" height="435" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="App Info" id="dialog1" widgetVar="dlg2" modal="false" width="630" height="435" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:imageSwitch id="images" effect="scrollLeft" widgetVar="gallery" slideshowAuto="false">
                     <p:graphicImage value="images/tutorial/1.png" />
                     <p:graphicImage value="images/tutorial/2.png" />
@@ -97,8 +49,8 @@
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-4">  <p:commandButton onclick="HideTutorial()" id="btn_cloe" value="Zamknij" type="button"/></div>
-                        <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);PF('gallery').previous();
-                                void(0);" id="btn_prev" value="Cofnij" type="button"/></div>
+                        <div class="ui-grid-col-4"> <p:commandButton onclick="void(0); 
+                                void(0);" id="btn_prev" value="Nie wkurwj!" type="button"/></div>
                         <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);
                                 PF('gallery').next();
                                 void(0);" id="btn_next" value="Dalej" type="button"/></div>
@@ -122,6 +74,7 @@
                 <p:layoutUnit id="layek" position="north" size="110" gutter="0"  styleClass="ui-top" resizable="true" closable="true" collapsible="true">
                     <div id="header">
 
+                      
 
                         <img src="images/logo.PNG" width="294" height="74" alt="logo"/>
 

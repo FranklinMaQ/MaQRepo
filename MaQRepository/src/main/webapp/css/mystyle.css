@@ -16,7 +16,20 @@
 
 .myblurrybackground
 {
-    -webkit-filter: blur(10px);
+     -webkit-transition: all 0.5s ease;
+
+    -webkit-filter:  blur(10px);
+
+    
+}
+
+.unblurrybackground
+{
+     -webkit-transition: all 0.5s ease;
+
+    -webkit-filter:  blur(0px);
+
+    
 }
 
 .ui-datatable-empty-message {
@@ -40,10 +53,13 @@
 
 }
 
-#Dialog1.ui-dialog.ui-widget-content {
+#dialog1.ui-dialog.ui-widget-content {
     background-image: none;
     background-color: #0277BD;
+    
     opacity: 0.8 !important;
+    
+   
 }
 
 .ui-carousel-header {
