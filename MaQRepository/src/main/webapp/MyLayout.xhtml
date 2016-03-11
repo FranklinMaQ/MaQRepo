@@ -12,156 +12,54 @@
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
+               
                 <script type="text/javascript" src="css/script.js"></script>
                 <title>MaQ Repository</title>
             </f:facet>
-
-            <script>
-                
-              
-            </script>
-
         </h:head>
 
         <h:body onload="ShowTutorial()">
 
-          
+            <ui:insert name="cartNotification" >
+                <ui:include src="Notifications/CartNotification.xhtml">                           
+                </ui:include>
+            </ui:insert>
+
+            <ui:insert name="welcomeTutorial" >
+                <ui:include src="Dialogs/WelcomeTutorial.xhtml">                           
+                </ui:include>
+            </ui:insert>
             
-            <p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar" style="height: 65px;">
-                <h:outputText value="Dodano aplikację do koszyka!" style="font-size:36px;" />
-            </p:notificationBar>
-
-
-            <p:dialog header="App Info" id="dialog1" widgetVar="dlg2" modal="false" width="630" height="435" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:imageSwitch id="images" effect="scrollLeft" widgetVar="gallery" slideshowAuto="false">
-                    <p:graphicImage value="images/tutorial/1.png" />
-                    <p:graphicImage value="images/tutorial/2.png" />
-                    <p:graphicImage value="images/tutorial/3.png" />
-                    <p:graphicImage value="images/tutorial/4.png" />
-                    <p:graphicImage value="images/tutorial/5.png" />
-                    <p:graphicImage value="images/tutorial/6.png" />
-                    <p:graphicImage value="images/tutorial/7a.png" />
-                    <p:graphicImage value="images/tutorial/8.png" />
-                    <p:graphicImage value="images/tutorial/9.png" />
-
-                </p:imageSwitch>
-
-                <div class="ui-grid ui-grid-responsive">
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-4">  <p:commandButton onclick="HideTutorial()" id="btn_cloe" value="Zamknij" type="button"/></div>
-                        <div class="ui-grid-col-4"> <p:commandButton onclick="void(0); 
-                                void(0);" id="btn_prev" value="Nie wkurwj!" type="button"/></div>
-                        <div class="ui-grid-col-4"> <p:commandButton onclick="void(0);
-                                PF('gallery').next();
-                                void(0);" id="btn_next" value="Dalej" type="button"/></div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-            </p:dialog>  
-
             <p:layout fullPage="true">
-
-
-               
-
-                <p:layoutUnit id="layek" position="north" size="110" gutter="0"  styleClass="ui-top" resizable="true" closable="true" collapsible="true">
+                
+                <p:layoutUnit id="layek" position="north" size="110" gutter="0"  styleClass="ui-top" resizable="true" closable="true" collapsible="true" style="border-color: white;">
                     <div id="header">
-
-                      
-
                         <img src="images/logo.PNG" width="294" height="74" alt="logo"/>
-
-                    </div>
-                    
-                    
-
-                </p:layoutUnit>
-
-
-
-                <p:layoutUnit position="east" size="145" collapsible="false">
-                    <div id="div_koszyk">
-                        <h:form id="form_koszyk">
-
-                            <h:commandLink value="Save">
-             
-                <p:dataExporter type="xml" target="cart_apps" fileName="apki" />
-            </h:commandLink>
-                            
-                            <p:contextMenu for="cart_apps" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
-                                <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}" />
-                            </p:contextMenu>
-
-
-                            <!--   <p:tooltip id="toolTipTrack" for="cart_apps" value="TEst" trackMouse="true" />
-                            -->
-                            <p:dataTable id="cart_apps" var="cart_app" value="#{orderListBean.apps}" 
-                                         draggableRows="true" selection="#{orderListBean.selectedApp}" rowKey="#{cart_app.name}" selectionMode="single">
-                                <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk" />
-                                <f:facet name="header">
-                                    Koszyk
-                                </f:facet>
-
-
-
-                              
-                                
-                                <p:column style="text-align: center;" exportable="false" width="110px;">
-                                     <f:facet name="header">
-                                          <h:outputText value="icon"/>
-                                     </f:facet>
-                                   
-                                     <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
-                                    <p:graphicImage  value="/images/separator.png" />
-
-                                </p:column>
-                                
-                                
-                                 <p:column style="text-align: center; visibility: hidden;">
-                                     <f:facet name="header">
-                                          <h:outputText value="name"/>
-                                     </f:facet>
-                                   
-                                     <h:outputText value="#{cart_app.name}" />
-
-                                </p:column>
-                                
-                                
-                            </p:dataTable> 
-
-                        </h:form>
                     </div>
                 </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-
-                    <!--style=" -webkit-filter: blur(2px);"-->
-                 
-                                <ui:insert name="uzytkoweCarousel" >
-                                    <ui:include src="Carousels/Official/Carousel.xhtml">
-                                        <ui:param name="title" value="Aplikacje użytkowe" />
-                                        <ui:param name="genre" value="uzytkowe" />
-                                    </ui:include>
-                                </ui:insert>
-
-                          
-                                <ui:insert name="multimediaCarousel" >
-                                    <ui:include src="Carousels/Official/Carousel.xhtml">
-                                        <ui:param name="title" value="Aplikacje multimedialne" />
-                                        <ui:param name="genre" value="multimedia" />
-                                    </ui:include>
-                                </ui:insert>
-
-                         
-                 
+                
+                <p:layoutUnit position="east" size="145" collapsible="false" style="border-color: white;">
+                     <ui:insert name="cartInsert" >
+                <ui:include src="Cart/Cart.xhtml">                           
+                </ui:include>
+            </ui:insert>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="center" style="border-color: white;">
                     
+                    <ui:insert name="uzytkoweCarousel" >
+                        <ui:include src="Carousels/Official/Carousel.xhtml">
+                            <ui:param name="title" value="Aplikacje użytkowe" />
+                            <ui:param name="genre" value="uzytkowe" />
+                        </ui:include>
+                    </ui:insert>
+                    
+                    <ui:insert name="multimediaCarousel" >
+                        <ui:include src="Carousels/Official/Carousel.xhtml">
+                            <ui:param name="title" value="Aplikacje multimedialne" />
+                            <ui:param name="genre" value="multimedia" />
+                        </ui:include>
+                    </ui:insert>
                 </p:layoutUnit>
 
             </p:layout>

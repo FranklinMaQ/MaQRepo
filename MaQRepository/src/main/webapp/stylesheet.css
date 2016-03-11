@@ -1,0 +1,8 @@
+/* @font-face kit by Fonts2u (http://www.fonts2u.com) */ @font-face {font-family:"Amatic SC Bold";src:url("AmaticSC-Bold.eot?") format("eot"),url("AmaticSC-Bold.woff") format("woff"),url("AmaticSC-Bold.ttf") format("truetype"),url("AmaticSC-Bold.svg#AmaticSC-Bold") format("svg");font-weight:normal;font-style:normal;}
+
+*
+{
+   font-family:"Amatic SC Bold";
+   font-style: bold;
+   font-size: 16pt;
+}

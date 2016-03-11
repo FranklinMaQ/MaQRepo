@@ -21,6 +21,7 @@
     -webkit-filter:  blur(10px);
 
     
+    
 }
 
 .unblurrybackground
@@ -62,9 +63,15 @@
    
 }
 
+.ui-carousel
+{
+    border-color: transparent !important;
+}
+
+
 .ui-carousel-header {
     background-color: #0277BD !important;
-   
+   border-color: transparent !important;
 
 }
 
@@ -121,3 +128,18 @@ border: 0 !important;
 border-style: none !important;
 
 }
+
+.ui-carousel-next-button 
+{
+    background-color: white !important;
+}
+.ui-carousel-prev-button 
+{
+     background-color: white !important;
+}
+
+.ui-carousel-page-link
+{
+    display: none !important;
+}
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+    </h:head>
+    <body>
+        <ui:composition>
+           <div id="div_koszyk">
+                        <h:form id="form_koszyk">
+
+                            <h:commandLink value="Save">
+
+                                <p:dataExporter type="xml" target="cart_apps" fileName="apki" />
+                            </h:commandLink>
+
+                            <p:contextMenu for="cart_apps" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
+                                <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}" />
+                            </p:contextMenu>
+
+
+                            <!--   <p:tooltip id="toolTipTrack" for="cart_apps" value="TEst" trackMouse="true" />
+                            -->
+                            <p:dataTable id="cart_apps" var="cart_app" value="#{orderListBean.apps}" 
+                                         draggableRows="true" selection="#{orderListBean.selectedApp}" rowKey="#{cart_app.name}" selectionMode="single">
+                                <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk" />
+                                <f:facet name="header">
+                                    Koszyk
+                                </f:facet>
+
+
+
+
+
+                                <p:column style="text-align: center;" exportable="false" width="110px;">
+                                    <f:facet name="header">
+                                        <h:outputText value="icon"/>
+                                    </f:facet>
+
+                                    <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
+                                    <p:graphicImage  value="/images/separator.png" />
+
+                                </p:column>
+
+
+                                <p:column style="text-align: center; visibility: hidden;">
+                                    <f:facet name="header">
+                                        <h:outputText value="name"/>
+                                    </f:facet>
+
+                                    <h:outputText value="#{cart_app.name}" />
+
+                                </p:column>
+
+
+                            </p:dataTable> 
+
+                        </h:form>
+                    </div>
+        </ui:composition>
+
+
+    </body>
+</html>
+
+
