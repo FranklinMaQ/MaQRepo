@@ -6,9 +6,13 @@
 package maq.repository.InterfacesImpl;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import maq.repository.App.App;
 import maq.repository.Interfaces.IAppsLoader;
 import maq.repository.Utilities.XMLParser;
+import maq.repository.Utilities.XPathLinksParser;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -22,6 +26,8 @@ public class MultimediaAppsLoader implements IAppsLoader {
     public ArrayList<App> LoadApps() {      
         
       //  return uzytkowe;
+     
+      
         return XMLParser.ParseFile(apps_file);
         
     }

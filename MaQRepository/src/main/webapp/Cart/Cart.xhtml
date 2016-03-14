@@ -20,6 +20,9 @@
 
                             <p:contextMenu for="cart_apps" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
                                 <p:menuitem value="Usuń aplikację" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}" />
+                                
+                                 <p:menuitem value="#{orderListBean.selectedApp.selectedVersion}" update="cart_apps" icon="ui-icon-close" actionListener="#{orderListBean.remove}" />
+                                
                             </p:contextMenu>
 
 
@@ -28,9 +31,7 @@
                             <p:dataTable id="cart_apps" var="cart_app" value="#{orderListBean.apps}" 
                                          draggableRows="true" selection="#{orderListBean.selectedApp}" rowKey="#{cart_app.name}" selectionMode="single">
                                 <p:ajax event="rowReorder" listener="#{orderListBean.onRowReorder}" update=":form_koszyk" />
-                                <f:facet name="header">
-                                    Koszyk
-                                </f:facet>
+                               
 
 
 
@@ -38,7 +39,7 @@
 
                                 <p:column style="text-align: center;" exportable="false" width="110px;">
                                     <f:facet name="header">
-                                        <h:outputText value="icon"/>
+                                        <h:outputText value="Koszyk"/>
                                     </f:facet>
 
                                     <p:graphicImage value="#{cart_app.icon}" style="width: 100px; height: 100px;" />
@@ -53,6 +54,15 @@
                                     </f:facet>
 
                                     <h:outputText value="#{cart_app.name}" />
+
+                                </p:column>
+                                
+                                <p:column style="text-align: center; visibility: hidden;">
+                                    <f:facet name="header">
+                                        <h:outputText value="version"/>
+                                    </f:facet>
+
+                                    <h:outputText value="#{cart_app.selectedVersion}" />
 
                                 </p:column>
 

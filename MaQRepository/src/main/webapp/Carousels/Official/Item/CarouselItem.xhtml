@@ -8,10 +8,10 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
 
-      
 
-        
-        
+
+
+
     </h:head>
     <body>
 
@@ -20,12 +20,19 @@
 
             <p:row>
                 <p:column rowspan="2">
-                   
+
                     <p:graphicImage value="#{app.icon}" style="weight: 70px; height: 70px;" />
 
                 </p:column>
                 <p:column> <h:outputText value="#{app.name}"/></p:column>
-                <p:column rowspan="2">POLE COMBO</p:column>
+                <p:column rowspan="2">
+
+                    <p:selectOneMenu id="versions" value="#{app.selectedVersion}" style="width: 25pt;" effect="fold">
+                     
+                        <f:selectItems value="#{app.versions}" var="version"  itemDescription="Naciśnij ikonę informacji, by wyświetlić listę zmian dla wersji #{version}"/>
+                    </p:selectOneMenu>
+
+                </p:column>
             </p:row>
             <p:row>
                 <p:column> <h:outputText value="#{app.publisher}" /></p:column>
@@ -46,14 +53,14 @@
                                 <p>cos sie zepsulo nie bylo mnie slychac</p>
                             </c:otherwise>
                         </c:choose>
-                       
+
                     </p:commandButton>
                 </p:column>
             </p:row>
             <p:row>
                 <p:column>
                     <p:commandButton action="#{orderListBean.insert(app)}" update=":form_koszyk" oncomplete="ShowSuccessNotification()" icon="ui-icon-plus" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
-                         <c:choose>
+                        <c:choose>
                             <c:when test="#{parent eq 'uzytkowe'}">
                                 <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
                             </c:when>

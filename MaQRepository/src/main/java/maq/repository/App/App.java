@@ -1,7 +1,9 @@
 package maq.repository.App;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class App implements Serializable{
@@ -11,9 +13,12 @@ public class App implements Serializable{
      private String publisher;
     private String description;
     private String icon;
-    private Map<String, String> linki = new HashMap<String, String>();
+    private Map<String, String> linki = new HashMap<>();
+    private List<String> versions;
     private String homepage;
-    private int orderId;
+   private String selectedVersion;
+
+   
 
  
     private String category;
@@ -28,6 +33,7 @@ public class App implements Serializable{
         this.icon = icon;
         this.linki = linki;
         this.category = category;
+        this.versions = new ArrayList<>();
     }
 
    
@@ -72,13 +78,7 @@ public class App implements Serializable{
         this.icon = icon;
     }
 
-    public Map<String, String> getLinki() {
-        return linki;
-    }
-
-    public void setLinki(Map<String, String> linki) {
-        this.linki = linki;
-    }
+   
 
     public String getCategory() {
         return category;
@@ -94,6 +94,25 @@ public class App implements Serializable{
 
     public void setHomepage(String homepage) {
         this.homepage = homepage;
+    }
+    
+     public List<String> getVersions() {
+      
+         for(Object o : linki.keySet())
+         {
+             versions.add(o.toString());
+         }
+         
+         return versions;
+    }
+
+
+    public String getSelectedVersion() {
+        return selectedVersion;
+    }
+
+    public void setSelectedVersion(String selectedVersion) {
+        this.selectedVersion = selectedVersion;
     }
 }
 

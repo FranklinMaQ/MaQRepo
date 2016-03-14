@@ -7,6 +7,8 @@ package maq.repository.Utilities;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import maq.repository.App.App;
@@ -28,8 +30,10 @@ public class XMLParser {
     
    
     public static ArrayList<App> ParseFile(String apps_file) {
-       
-        ArrayList<App> app_list = new ArrayList<App>();
+        XPathLinksParser xpp = new XPathLinksParser();
+        Map<String, String> linki = new HashMap<String, String>();
+        
+        ArrayList<App> app_list = new ArrayList<>();
         try {
 
             App app;
@@ -46,18 +50,22 @@ public class XMLParser {
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
 
+                
+                
                 Node nNode = nList.item(temp);      // pojedyncza Appka
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element e = (Element) nNode;
-
+                    
+                    linki = xpp.Parse(apps_file, getValueOfElement(e, "Name"));
+                    System.out.println("TERAZ: " + linki.size());
                     app = new App(getValueOfElement(e, "Name"),
                             getValueOfElement(e, "Short_Name"),
                             getValueOfElement(e, "Publisher"),
                             getValueOfElement(e, "Homepage"),
                             getValueOfElement(e, "Description"),
                             getValueOfElement(e, "Icon"),
-                            null,
+                            linki,
                             getValueOfElement(e, "Category"));
 
                     app_list.add(app);

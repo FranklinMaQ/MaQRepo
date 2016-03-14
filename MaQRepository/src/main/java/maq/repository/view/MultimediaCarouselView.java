@@ -11,7 +11,6 @@ import maq.repository.App.App;
 import maq.repository.Interfaces.IAppsLoader;
 import maq.repository.Interfaces.ICarouselView;
 import maq.repository.InterfacesImpl.MultimediaAppsLoader;
-import maq.repository.InterfacesImpl.UzytkoweAppsLoader;
 
 
 @ManagedBean
