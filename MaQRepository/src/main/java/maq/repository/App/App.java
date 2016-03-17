@@ -13,7 +13,17 @@ public class App implements Serializable{
      private String publisher;
     private String description;
     private String icon;
-    private Map<String, String> linki = new HashMap<>();
+    private Map<String, AppVersion> linki = new HashMap<>();
+
+    public Map<String, AppVersion> getLinki() {
+        return linki;
+    }
+
+    public void setLinki(Map<String, AppVersion> linki) {
+        this.linki = linki;
+    }
+
+  
     private List<String> versions;
     private String homepage;
    private String selectedVersion;
@@ -24,7 +34,7 @@ public class App implements Serializable{
     private String category;
 // color:#{carouselView.selectedCar.color}"/>
     
-    public App(String name, String short_name, String publisher, String homepage, String description, String icon, Map<String, String> linki, String category) {
+    public App(String name, String short_name, String publisher, String homepage, String description, String icon, Map<String, AppVersion> linki, String category) {
          this.name = name;
          this.short_name = short_name;
         this.publisher = publisher;       

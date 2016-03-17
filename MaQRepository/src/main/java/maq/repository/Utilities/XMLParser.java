@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import maq.repository.App.App;
+import maq.repository.App.AppVersion;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -31,7 +32,7 @@ public class XMLParser {
    
     public static ArrayList<App> ParseFile(String apps_file) {
         XPathLinksParser xpp = new XPathLinksParser();
-        Map<String, String> linki = new HashMap<String, String>();
+        Map<String, AppVersion> linki = new HashMap<>();
         
         ArrayList<App> app_list = new ArrayList<>();
         try {
@@ -58,6 +59,7 @@ public class XMLParser {
                     Element e = (Element) nNode;
                     
                     linki = xpp.Parse(apps_file, getValueOfElement(e, "Name"));
+                    
                     System.out.println("TERAZ: " + linki.size());
                     app = new App(getValueOfElement(e, "Name"),
                             getValueOfElement(e, "Short_Name"),

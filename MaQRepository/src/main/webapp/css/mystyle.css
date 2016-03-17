@@ -4,12 +4,12 @@
     text-align: center;
 }
 
-.ui-panel {
-    background-color: rgba(r,g,b,a) !important;
+#spacer
+{
+    background: -webkit-linear-gradient(lightblue, white); 
+    height: 4px;
+    width: 850px;
 }
-
-.noBorder tr,
-.noBorder td { border: 0 !important; }
 
 .transparentBackground tr,
 .transparentBackground td { background: transparent !important; }
@@ -39,7 +39,8 @@
 
 .ui-top, .ui-top .ui-layout, .ui-top .ui-layout-bd, .ui-top .ui-layout-unit {
     background-image: none!important;
-    background-color: #0277BD!important; 
+    background-color: transparent !important; 
+    
 }
 
 .ui-panelgrid td, .ui-panelgrid tr
@@ -71,15 +72,23 @@
 
 .ui-carousel-header {
     background-color: #0277BD !important;
+
+    background-image: none !important;
    border-color: transparent !important;
+   box-shadow: 1px 1px 5px lightblue;
 
 }
 
 .ui-carousel-header-title
 {
-    color: darkblue !important;
-    text-shadow: 0px !important;
+    color: transparent !important;
+   font-size: 16px;
+  text-shadow: 1px 1px #FFFFFF;
+   
+   
 }
+
+
 
 .ui-carousel-button ui-carousel-prev-button ui-icon ui-icon-circle-triangle-w
 {
@@ -92,7 +101,10 @@
      display: none !important;
 }
 
+.ui-carousel-item{
 
+border-color: transparent !important;
+}
 
 .top {
     filter:alpha(opacity=80);
@@ -109,7 +121,8 @@
 myFieldset .ui-fieldset, .ui-fieldset .ui-fieldset-legend {
 background-color: transparent !important;
 border-color: lightblue !important;
-border-radius: 10px;
+
+border-radius: 5px;
 
 }
 
@@ -118,6 +131,17 @@ background-color: transparent !important;
 border-color: transparent !important;
 
 
+}
+
+.ui-fieldset .ui-state-default {
+    background: transparent !important;
+    border-color: transparent !important;
+   box-shadow: 1px 1px 5px lightblue;
+}
+
+myFieldset .ui-selectonemenu
+{
+    border: none !important;
 }
 
 .klawiszClose
@@ -143,3 +167,18 @@ border-style: none !important;
     display: none !important;
 }
 
+.ui-tabs-nav
+{
+  width: 150px !important;
+    text-align: right !important;
+    text-align: left !important;
+    
+}
+
+.ui-tabs-panel
+{
+     color: red !important;
+     position: absolute !important;
+     left: 130px !important;
+     top: -18px !important;
+}

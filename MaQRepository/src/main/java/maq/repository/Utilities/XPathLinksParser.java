@@ -12,6 +12,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+import maq.repository.App.AppVersion;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -30,9 +31,9 @@ public class XPathLinksParser {
      * 
      * Zwraca haszmapę linków dla danej aplikacji
      */
-    public Map<String, String> Parse(String fileName, String appName) throws SAXException
+    public Map<String, AppVersion> Parse(String fileName, String appName) throws SAXException
     {
-     Map<String, String> linki = new HashMap<>();
+     Map<String, AppVersion> linki = new HashMap<>();
         
           DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -60,20 +61,23 @@ public class XPathLinksParser {
          return linki;
     }
     
-     private Map<String, String> getLinksForApp(Document doc, XPath xpath, String appName) {
-       Map<String, String> linki = new HashMap<String, String>();
+     private Map<String, AppVersion> getLinksForApp(Document doc, XPath xpath, String appName) {
+       Map<String, AppVersion> linki = new HashMap<>();
         try {
          // version selector
             XPathExpression getVersionAttributes = xpath.compile("/Repository/Apps/App[Name='" + appName + "']/Links/Link/@version");
+            // changelog selector
+            XPathExpression getChangelogAttributes = xpath.compile("/Repository/Apps/App[Name='" + appName + "']/Links/Link/@changelog");
             //links 
             XPathExpression getVersionValues = xpath.compile("/Repository/Apps/App[Name='" + appName + "']/Links/Link[@version]/text()");
         
             NodeList nodesAtrribute = (NodeList) getVersionAttributes.evaluate(doc, XPathConstants.NODESET);
+             NodeList nodesChangelogAtrribute = (NodeList) getChangelogAttributes.evaluate(doc, XPathConstants.NODESET);
              NodeList nodesValues = (NodeList) getVersionValues.evaluate(doc, XPathConstants.NODESET);
              
             for (int i = 0; i < nodesAtrribute.getLength(); i++)
             {
-                linki.put(nodesAtrribute.item(i).getNodeValue(), nodesValues.item(i).getNodeValue());
+                linki.put(nodesAtrribute.item(i).getNodeValue(), new AppVersion(nodesValues.item(i).getNodeValue(), nodesChangelogAtrribute.item(i).getNodeValue()));
                 
             }
             
