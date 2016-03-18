@@ -18,13 +18,13 @@
 
         <ui:composition>
 
-            <p:row>
-                <p:column rowspan="2">
+            <p:row >
+                <p:column rowspan="2" >
 
                     <p:graphicImage value="#{app.icon}" style="weight: 70px; height: 70px;" />
 
                 </p:column>
-                <p:column> <h:outputText value="#{app.name}"/></p:column>
+                <p:column> <h1><h:outputText value="#{app.name}"/></h1></p:column>
                 <p:column rowspan="2">
 
                     <p:selectOneMenu id="versions" value="#{app.selectedVersion}" style="width: 25pt;" effect="fold">
@@ -40,7 +40,7 @@
             <p:row>
                 <p:column colspan="2" rowspan="2"><h:outputText value="#{app.description}"/></p:column>
                 <p:column>
-                    <p:commandButton update=":form_#{parent}:#{parent}AppDetail" oncomplete="BackgroundBlur();PF('#{parent}AppDialog').show();" icon="ui-icon-info" style=" box-shadow: 2px 2px 10px lightblue; border-color: lightblue; border-width: 1px; background-color: transparent !important;">
+                    <p:commandButton update=":fluid:form_#{parent}:#{parent}AppDetail" oncomplete="BackgroundBlur();PF('#{parent}AppDialog').show();" icon="ui-icon-info" style=" box-shadow: 2px 2px 10px lightblue; border-color: lightblue; border-width: 1px; background-color: transparent !important;">
 
                         <c:choose>
                             <c:when test="#{parent eq 'uzytkowe'}">

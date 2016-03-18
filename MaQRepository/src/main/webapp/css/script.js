@@ -8,6 +8,8 @@ function BackgroundBlur()
     document.getElementById("div_koszyk").className = "myblurrybackground";
 }
 
+
+
 function BackgroundUnBlur()
 {
     document.getElementById("uzytkoweDivKaruzela").className = "unblurrybackground";
@@ -49,4 +51,8 @@ function ShowSuccessNotification()
     }, 2000);
     //
 
+}
+
+function Resize() {
+  document.getElementById("uzytkoweDivKaruzela").style.width="900px";
 }

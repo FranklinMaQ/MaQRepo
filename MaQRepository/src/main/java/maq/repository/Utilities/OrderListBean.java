@@ -12,7 +12,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import maq.repository.App.App;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.ReorderEvent;
+import org.primefaces.event.SelectEvent;
 
 @ManagedBean(name="orderListBean")
 @ApplicationScoped
@@ -51,7 +53,20 @@ public class OrderListBean implements Serializable {
        System.out.println("Dodano apke : " + apps.size());
    }
    
-   
+   public void removeByName(String name)
+   {
+       System.err.println(name + " ssdsa");
+       
+       for(App x : apps)
+       {
+           if(x.getName().equals(name))
+           {
+               apps.remove(x);
+           }
+       }
+         RequestContext context = RequestContext.getCurrentInstance();
+         context.update(":form_koszyk");
+   }
    
    public void remove()
    {
@@ -96,6 +111,8 @@ public class OrderListBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
-     
+      public void onRowSelect(SelectEvent event) {
+      
+    }
 
 }

@@ -19,8 +19,8 @@
     <body>
         <ui:composition>
             <h:form id="form_#{genre}">
-                <div align="center" id='#{genre}DivKaruzela'>
-                    <p:carousel value="#{genreBean.beanMap[genre].apps}" headerText="#{title}" var="app" itemStyle="text-align:center" responsive="false" style="width: 850px;">
+                <div id='#{genre}DivKaruzela'>
+                    <p:carousel value="#{genreBean.beanMap[genre].apps}" headerText="#{title}" var="app" itemStyle="" responsive="false" style="width: 850px;">
                         <p:panelGrid id="#{genre}_panelitem" >
                             <ui:insert name="#{genre}CarouselItem" >
                                 <ui:include src="Item/CarouselItem.xhtml" >
@@ -31,19 +31,17 @@
                     </p:carousel>
 
                     <div id="spacer"></div>
-                    <p:fieldset widgetVar="#{genre}_fieldset" legend="Pokaż więcej aplikacji" toggleable="true" collapsed="true" toggleSpeed="500" style="text-align: center; width: 800px;">
-
+                    
+                    <p:fieldset widgetVar="#{genre}_fieldset" id="#{genre}_fieldset" legend="Pokaż więcej aplikacji" toggleable="true" collapsed="true" toggleSpeed="5" style="text-align: center; width: 800px;">
+                        <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" onstart="PF('fluid').layout();">
+                          
+                        </p:ajax>
+                        
                         <p:dataGrid id="extendedApps" var="extApp" value="#{genreBean.beanMap[genre].apps}" columns="3">
-
                             <p:panelGrid>
-
-
-
                                 <p:row>
                                     <p:column rowspan="2">
-
                                         <p:graphicImage value="#{extApp.icon}" style="weight: 70px; height: 70px;" />
-
                                     </p:column>
                                     <p:column> <h:outputText value="#{extApp.name}"/></p:column>
                                     <p:column rowspan="2">
@@ -68,30 +66,27 @@
 
                             </p:panelGrid>
 
-                            <!--
-                            <p:panel id="#{genre}pnl" header="#{extApp.name}" style="text-align:center">
-                                <h:panelGrid columns="1" style="width:100%">
-                                    <p:graphicImage value="#{extApp.icon}" style="width: 64px; height: 64px;"/>
-                                </h:panelGrid>
-                            </p:panel>
-                            -->
+                        
+                          
 
                         </p:dataGrid>
 
                     </p:fieldset>
+                      
+                    
 
                 </div>
 
 
-                <p:dialog header="App Info" widgetVar="#{genre}AppDialog"  modal="false" draggable="false" showEffect="fade" hideEffect="fade" resizable="false" style="border-color: silver; border-width: 1px; background:rgba(255,255,255,0.2) !important;">
+                <p:dialog header="App Info" widgetVar="#{genre}AppDialog"  modal="false" draggable="false" showEffect="fade" hideEffect="fade" resizable="false" style="border-color: silver; border-width: 1px; background:rgba(0,0,0,0.1) !important;">
 
                     <p:outputPanel id="#{genre}AppDetail" style="width: 800px;">
                         <p:panelGrid rendered="#{not empty genreBean.beanMap[genre].selectedApp}" >
 
 
-                            <img src="#{genreBean.beanMap[genre].selectedApp.icon}" alt="Nettuts+ Logo" style="-webkit-filter: blur(30px);  width: 400px; height: 400px; "/>
+                           <img src="#{genreBean.beanMap[genre].selectedApp.icon}" alt="Nettuts+ Logo" style="-webkit-filter: blur(30px);  width: 400px; height: 400px; "/> 
                             <div style = "position: absolute; left: 30px; top: 60px; "><img src="#{genreBean.beanMap[genre].selectedApp.icon}" style="width: 128px; height: 128px;"/></div>
-                            <div style=" position: absolute; left:180px; top:70px; text-shadow: 0px 0px 15px #000000; background-color:rgba(0,0,0,0.0); color: #FFFFFF; font-size: 26pt;">#{genreBean.beanMap[genre].selectedApp.name}</div> 
+                            <div style=" position: absolute; left:180px; top:70px; text-shadow: 0px 0px 15px #000000; background-color:rgba(0,0,0,0.0); color: #FFFFFF; font-size: 26pt;"><x>#{genreBean.beanMap[genre].selectedApp.name}</x></div> 
                             <div style=" position: absolute; left:180px; top:140px; text-shadow: 0px 0px 15px #000000; background-color:rgba(0,0,0,0.0); color: white; font-size: 22pt;">#{genreBean.beanMap[genre].selectedApp.publisher}</div> 
                             <div style=" position: absolute; left:180px; top:180px; background-color:rgba(0,0,0,0.1); color: white; font-size: 22pt;">#{genreBean.beanMap[genre].selectedApp.selectedVersion}</div> 
 

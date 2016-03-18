@@ -11,6 +11,24 @@
     width: 850px;
 }
 
+h1 {
+	font-family: 'Century Gothic';
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 1000;
+	line-height: 26.4px;
+}
+
+x {
+	font-family: 'Century Gothic';
+	font-size: 40px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
 .transparentBackground tr,
 .transparentBackground td { background: transparent !important; }
 
@@ -82,9 +100,17 @@
 .ui-carousel-header-title
 {
     color: transparent !important;
-   font-size: 16px;
-  text-shadow: 1px 1px #FFFFFF;
-   
+ 
+  text-shadow: 1px 1px #FFFFFF;  
+  
+  font-family: 'Century Gothic';
+	font-size: 20px;
+       
+       
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
    
 }
 
@@ -182,3 +208,33 @@ border-style: none !important;
      left: 130px !important;
      top: -18px !important;
 }
+
+
+
+
+.ui-datatable .ui-state-hover {
+  
+   background:rgba(255,0,0,0.6) !important;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+/*
+.ui-datatable .ui-state-active {
+   background: lightcoral !important;
+   border: none !important;
+}
+
+.ui-datatable .ui-state-disabled {
+   background: lightcoral !important;
+   border: none !important;
+}
+
+
+
+.ui-datatable .ui-state-highlight {
+   background: white !important;
+  
+}
+
+
+*/

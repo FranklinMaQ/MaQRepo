@@ -1,6 +1,8 @@
 package maq.repository.App;
 
-public class AppVersion {
+import java.io.Serializable;
+
+public class AppVersion implements Serializable {
 
     private String link;
     private String changelog;
