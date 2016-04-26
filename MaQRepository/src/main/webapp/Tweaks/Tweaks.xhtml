@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <h:head>
+    </h:head>
+    <body>
+        <ui:composition>
+            <h:form>     
+                <p:selectOneButton styleClass="buttons" id="caseSelection" value="#{switchBean.value}">  
+                    <f:selectItem  itemLabel="Windows 7" itemValue="windows7" />  
+                    <f:selectItem itemLabel="Windows 8.1" itemValue="windows8" />  
+                    <f:selectItem itemLabel="Windows 10" itemValue="windows10" />  
+
+
+                    <p:ajax update="switch" process="@this" />  
+                </p:selectOneButton>  
+
+                <p:separator />  
+
+                <pe:switch id="switch" value="#{switchBean.value}">  
+                    <pe:defaultCase>  
+                        Case: Default  
+                    </pe:defaultCase>  
+
+                    <pe:case value="windows7">  
+                        Case: <p:commandButton id="case1button" actionListener="#{switchBean.listener('case1')}"   
+                                               value="Call listener with 'case1'" />   
+                    </pe:case>  
+
+                    <pe:case value="windows8">  
+                        Case: <p:commandButton id="case2button" actionListener="#{switchBean.listener('case2')}"   
+                                               value="Call listener with 'case2'"  />  
+                    </pe:case>  
+
+                    <pe:case value="windows10">  
+                        Case: Null  
+                    </pe:case>  
+                </pe:switch>  
+
+                <!--
+                <p:selectManyCheckbox id="basic"  value="#{checkboxViewBean.selectedTweaks}">
+                    <f:selectItems value="#{checkboxViewBean.tweaks}" />
+
+                </p:selectManyCheckbox>
+-->
+
+            </h:form>
+        </ui:composition>
+
+
+    </body>
+</html>
+
+
