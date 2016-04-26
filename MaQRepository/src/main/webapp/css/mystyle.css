@@ -2,6 +2,42 @@
 {
     background-color: #0277BD;
     text-align: center;
+    font-size: 20pt;
+}
+
+#footer
+{
+    background-color: #0277BD;
+    text-align: center;
+    font-size: 20pt;
+
+}
+
+#menu_btn
+{
+    background-color: #0277BD;
+    text-align: center;
+    font-size: 20pt;
+    opacity: 0.0;
+    -webkit-animation: infinite;
+    -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+    -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+
+    animation-name: example;
+}
+
+@-webkit-keyframes example {
+    0%   {opacity: 0.0; }
+    50%   {opacity: 1.0; }
+    100% {opacity: 0.0;}
+}
+
+
+
+#stos:hover
+{
+    -webkit-filter:  blur(10px);
 }
 
 #spacer
@@ -12,21 +48,21 @@
 }
 
 h1 {
-	font-family: 'Century Gothic';
-	font-size: 16px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 1000;
-	line-height: 26.4px;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 1000;
+    line-height: 26.4px;
 }
 
 x {
-	font-family: 'Century Gothic';
-	font-size: 40px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
+    font-family: 'Century Gothic';
+    font-size: 40px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
 }
 
 .transparentBackground tr,
@@ -34,21 +70,26 @@ x {
 
 .myblurrybackground
 {
-     -webkit-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
 
     -webkit-filter:  blur(10px);
 
-    
-    
+
+
+}
+
+.ui-widget-overlay {
+    filter:alpha(opacity=10);  /* works in IE 7 */
+    opacity: 0.9 !important;  /* works in Firefox */
 }
 
 .unblurrybackground
 {
-     -webkit-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
 
     -webkit-filter:  blur(0px);
 
-    
+
 }
 
 .ui-datatable-empty-message {
@@ -58,8 +99,9 @@ x {
 .ui-top, .ui-top .ui-layout, .ui-top .ui-layout-bd, .ui-top .ui-layout-unit {
     background-image: none!important;
     background-color: transparent !important; 
-    
+
 }
+
 
 .ui-panelgrid td, .ui-panelgrid tr
 {
@@ -76,10 +118,19 @@ x {
 #dialog1.ui-dialog.ui-widget-content {
     background-image: none;
     background-color: #0277BD;
-    
+
     opacity: 0.8 !important;
-    
-   
+
+
+}
+
+#action_dialog.ui-dialog.ui-widget-content {
+    background-image: none;
+    background-color: transparent;
+
+    opacity: 0.8 !important;
+
+
 }
 
 .ui-carousel
@@ -92,26 +143,26 @@ x {
     background-color: #0277BD !important;
 
     background-image: none !important;
-   border-color: transparent !important;
-   box-shadow: 1px 1px 5px lightblue;
+    border-color: transparent !important;
+    box-shadow: 1px 1px 5px lightblue;
 
 }
 
 .ui-carousel-header-title
 {
     color: transparent !important;
- 
-  text-shadow: 1px 1px #FFFFFF;  
-  
-  font-family: 'Century Gothic';
-	font-size: 20px;
-       
-       
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
-   
+
+    text-shadow: 1px 1px #FFFFFF;  
+
+    font-family: 'Century Gothic';
+    font-size: 20px;
+
+
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
+
 }
 
 
@@ -124,12 +175,12 @@ x {
 
 .ui-icon-plusthick
 {
-     display: none !important;
+    display: none !important;
 }
 
 .ui-carousel-item{
 
-border-color: transparent !important;
+    border-color: transparent !important;
 }
 
 .top {
@@ -145,16 +196,16 @@ border-color: transparent !important;
 }
 
 myFieldset .ui-fieldset, .ui-fieldset .ui-fieldset-legend {
-background-color: transparent !important;
-border-color: lightblue !important;
+    background-color: transparent !important;
+    border-color: lightblue !important;
 
-border-radius: 5px;
+    border-radius: 5px;
 
 }
 
 myFieldset .ui-fieldset, .ui-fieldset {
-background-color: transparent !important;
-border-color: transparent !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
 
 
 }
@@ -162,7 +213,7 @@ border-color: transparent !important;
 .ui-fieldset .ui-state-default {
     background: transparent !important;
     border-color: transparent !important;
-   box-shadow: 1px 1px 5px lightblue;
+    box-shadow: 1px 1px 5px lightblue;
 }
 
 myFieldset .ui-selectonemenu
@@ -173,9 +224,9 @@ myFieldset .ui-selectonemenu
 .klawiszClose
 {
     background-color: transparent !important;
-border-color: transparent !important;
-border: 0 !important;
-border-style: none !important;
+    border-color: transparent !important;
+    border: 0 !important;
+    border-style: none !important;
 
 }
 
@@ -185,7 +236,7 @@ border-style: none !important;
 }
 .ui-carousel-prev-button 
 {
-     background-color: white !important;
+    background-color: white !important;
 }
 
 .ui-carousel-page-link
@@ -193,28 +244,30 @@ border-style: none !important;
     display: none !important;
 }
 
-.ui-tabs-nav
-{
-  width: 150px !important;
-    text-align: right !important;
-    text-align: left !important;
-    
+
+.ui-tabs .ui-tabs-panel {
+    padding: 0px 0px !important;
+    background: none !important;
+    border: 0 !important;
+
 }
 
-.ui-tabs-panel
-{
-     color: red !important;
-     position: absolute !important;
-     left: 130px !important;
-     top: -18px !important;
+.ui-tabs-nav {
+    display: none!important;
 }
 
+.ui-layout-bd { 
+    border: 0 !important; 
+    margin: 0 !important;
+}
 
-
+.ui-panel .ui-panel-content {
+    padding: 0px 0px !important;
+}
 
 .ui-datatable .ui-state-hover {
-  
-   background:rgba(255,0,0,0.6) !important;
+
+    background:rgba(255,0,0,0.6) !important;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
@@ -238,3 +291,66 @@ border-style: none !important;
 
 
 */
+
+.ui-stack {
+    bottom: 128px !important;
+    right: 240px !important;
+}
+
+body{
+    margin: 0;
+}
+#apps_menu{
+    height: 60px;
+    width: 45%;
+    border: none;
+    background-color: #0288D1;
+    float: left;
+}
+#tweaks_menu{
+    height: 60px;
+    width: 45%;
+    border: none;
+    background-color: #0288D1;
+    float: left;
+}
+
+#more_menu{
+    height: 60px;
+    width: 10%;
+    border: none;
+    background-color: #0288D1;
+    float: right;
+}
+
+#apps_menu, #tweaks_menu, #more_menu {
+    -webkit-box-sizing: border-box;  
+    -moz-box-sizing: border-box;  
+    box-sizing: border-box;   
+}
+
+.ui-button-text
+{
+  box-shadow: transparent !important;
+}
+
+.ui-editor
+{
+    background: transparent !important;
+    border: 4 !important;
+}
+
+
+.ui-editor-toolbar
+{
+    background: transparent !important;
+    border: 0 !important;
+   zoom: 160% !important;
+   
+}
+
+.ui-editor-button
+{
+   
+   opacity: 80% !important;
+}

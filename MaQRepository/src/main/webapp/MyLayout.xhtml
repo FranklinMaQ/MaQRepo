@@ -21,8 +21,8 @@
             </f:facet>
         </h:head>
 
-        <h:body>
-            <!--  <h:body onload="ShowTutorial()"> -->
+
+        <h:body onload="ShowTutorial()" > 
 
             <ui:insert name="cartNotification" >
                 <ui:include src="Notifications/CartNotification.xhtml">                           
@@ -34,73 +34,142 @@
                 </ui:include>
             </ui:insert>
 
+            <ui:insert name="actionDlg" >
+                <ui:include src="Dialogs/ActionSelect.xhtml">                           
+                </ui:include>
+            </ui:insert>
+
             <p:layout fullPage="true">
 
-                <p:layoutUnit id="layek" position="north" size="110" gutter="0"  styleClass="ui-top" resizable="true" closable="true" collapsible="true" style="border-color: white;">
+                <p:layoutUnit id="layek" position="north" size="174" gutter="0"  styleClass="ui-top"  style="border-color: transparent;">
                     <div id="header">
                         <img src="images/logo.PNG" width="294" height="74" alt="logo"/>
+
+                        <div id="main_menu">
+                            <div id="apps_menu">
+
+
+                                <p:commandButton value="APLIKACJE" action="#{tabViewBean.ustaw}" update="tabView"  style="color: white; font-weight: lighter; width: 100%; height: 100%; background-image: none !important; background: none !important; border: none !important;" >
+
+                                    <f:setPropertyActionListener target="#{tabViewBean.activeIndex}" value="0" />
+                                </p:commandButton>
+
+
+                            </div>
+                            <div id="tweaks_menu"> 
+                                <p:commandButton  value="TWEAKI" action="#{tabViewBean.ustaw}" update="tabView" style="color: white; width: 100%; height: 100%; background-image: none !important; background: none !important; border: none !important;" >
+
+                                    <f:setPropertyActionListener target="#{tabViewBean.activeIndex}" value="1" />
+                                </p:commandButton>
+
+
+
+                            </div>
+                            <div id="more_menu">
+
+                                <p:graphicImage id="menu_btn" onclick="PF('action_dialog').show(); BackgroundBlur();" value="images/menu2.png" width="50" height="50" />
+
+
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </p:layoutUnit>
 
-                <p:layoutUnit position="east" size="145" collapsible="false" style="border-color: white;">
+                <p:layoutUnit position="east" size="145" gutter="0" collapsible="false" style="border-color: white;">
                     <ui:insert name="cartInsert" >
                         <ui:include src="Cart/Cart.xhtml">                           
                         </ui:include>
                     </ui:insert>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="center" style="border: none !important; ">
+                <p:layoutUnit id="cent" position="center" gutter="0" style="border: none !important; ">
 
-                  
 
-                    <div id="fluid_center" align="center" style="width: 100%">
 
- 
-                        <pe:fluidGrid widgetVar="fluid"  fitWidth="true" id="fluid" hGutter="10" vGutter="10" style="">  
-                        <pe:fluidGridItem styleClass="ui-widget-header">
-                        
-                             <ui:insert name="uzytkoweCarousel" >
-                        <ui:include src="Carousels/Official/Carousel.xhtml">
-                            <ui:param name="title" value="Aplikacje użytkowe" />
-                            <ui:param name="genre" value="uzytkowe" />
-                        </ui:include>
-                    </ui:insert>
-                        
-                        </pe:fluidGridItem>  
-                        <pe:fluidGridItem styleClass="ui-widget-header">
-                            
-                             <ui:insert name="multimediaCarousel" >
-                        <ui:include src="Carousels/Official/Carousel.xhtml">
-                            <ui:param name="title" value="Aplikacje multimedialne" />
-                            <ui:param name="genre" value="multimedia" />
-                        </ui:include>
-                    </ui:insert>
+                    <p:tabView widgetVar="tabV" id="tabView" activeIndex="#{tabViewBean.activeIndex}">
+<!--    <p:ajax event="tabChange" listener="#{tabbedView.onTabChange}" update=":form:msgs"/>
+    <p:ajax event="tabClose" listener="#{tabbedView.onTabClose}" update=":form:msgs"/>
 
-                            
-                        </pe:fluidGridItem>  
-                       
-                    </pe:fluidGrid>  
-             </div>
-                    
-                    <h:form id="sss">
-                        s
-                        
-                    </h:form>
-                    <h:outputStylesheet id="fluidGridCSS">  
-                     
-                        .pe-fluidgrid .pe-fluidgrid-item {  
-                        width:  850px;  
-                      
-                      border: none !important;
-                       
-                      background-color: transparent !important;
-                        }  
+                        -->
 
-                       
-                    </h:outputStylesheet>  
+                        <p:tab title="Godfather Part I">
+                            <div id="fluid_center" align="center" style="width: 100%">
 
-                   
+
+                                <pe:fluidGrid widgetVar="fluid"  fitWidth="true" id="fluid" hGutter="10" vGutter="10" style="">  
+                                    <pe:fluidGridItem styleClass="ui-widget-header">
+
+                                        <ui:insert name="uzytkoweCarousel" >
+                                            <ui:include src="Carousels/Official/Carousel.xhtml">
+                                                <ui:param name="title" value="Aplikacje użytkowe" />
+                                                <ui:param name="genre" value="uzytkowe" />
+                                            </ui:include>
+                                        </ui:insert>
+
+                                    </pe:fluidGridItem>  
+                                    <pe:fluidGridItem styleClass="ui-widget-header">
+
+                                        <ui:insert name="multimediaCarousel" >
+                                            <ui:include src="Carousels/Official/Carousel.xhtml">
+                                                <ui:param name="title" value="Aplikacje multimedialne" />
+                                                <ui:param name="genre" value="multimedia" />
+                                            </ui:include>
+                                        </ui:insert>
+
+
+                                    </pe:fluidGridItem>  
+
+                                </pe:fluidGrid>  
+                            </div>
+
+
+
+
+                            <h:outputStylesheet id="fluidGridCSS">  
+
+                                .pe-fluidgrid .pe-fluidgrid-item {  
+                                width:  850px;  
+
+                                border: none !important;
+
+                                background-color: transparent !important;
+                                }  
+
+
+                            </h:outputStylesheet>  
+
+                        </p:tab>
+
+                        <p:tab title="Cz2">
+                             
+                            <h:form>           
+                                <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" controls="bold italic center | font size color | undo redo image removeformat" />
+
+                                <h:panelGrid columns="2" style="margin-top: 10px">
+                                    <p:commandButton value="Submit" update="display" icon="ui-icon-disk" />
+
+                                 
+                                </h:panelGrid>
+
+                               
+                                <h:outputText id="display" value="#{editorView.text}" escape="true" />
+                             
+                            </h:form> 
+                           
+                        </p:tab>
+
+                    </p:tabView>
+
+
+
+
+
                 </p:layoutUnit>
+
+
 
             </p:layout>
 

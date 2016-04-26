@@ -8,7 +8,10 @@ function BackgroundBlur()
     document.getElementById("div_koszyk").className = "myblurrybackground";
 }
 
-
+function closeDialogs(){
+   PF("dlg2").hide();
+   PF("action_dialog").hide();
+}
 
 function BackgroundUnBlur()
 {

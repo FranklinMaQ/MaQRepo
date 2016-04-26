@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+
+    </h:head>
+    <body>
+        <ui:composition>
+
+            <p:dialog header="" id="action_dialog" widgetVar="action_dialog" modal="true" width="100%" height="205" showEffect="fade" hideEffect="fade" resizable="false">
+                <h:form id="form_action_dialog">
+                    <div id="action_center" align="center" style="width: 100%">
+
+
+
+
+                        <p:commandLink title="Usuń koszyk" action="#{orderListBean.removeAll}" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()" update=":form_koszyk" >
+                            <p:graphicImage 
+                                            value="images/usun_koszyk.png"
+                                            width="180"
+                                            height="180">
+                              
+                            </p:graphicImage>
+                        </p:commandLink>
+
+                          <p:commandLink  title="Anuluj" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()"  >
+                            <p:graphicImage
+                                            value="images/close.png"
+                                            width="180"
+                                            height="180">
+                              
+                            </p:graphicImage>
+                        </p:commandLink>
+
+                         <h:commandLink  title="Zapisz projekt"   >
+                            
+                             <p:graphicImage
+                                            value="images/done.png"
+                                            width="180"
+                                            height="180">
+                              
+                            </p:graphicImage>
+                             <p:dataExporter id="scv" type="xml" target=":form_koszyk:cart_apps" fileName="apkidf" />
+                        </h:commandLink>
+
+                    </div>
+                </h:form>
+
+            </p:dialog>  
+
+        </ui:composition>
+
+
+    </body>
+</html>
+
+

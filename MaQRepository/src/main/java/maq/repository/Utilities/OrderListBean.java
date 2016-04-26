@@ -43,6 +43,17 @@ public class OrderListBean implements Serializable {
     {
         apps = new ArrayList<>();
     }
+    
+    public void removeAll()
+    {
+        apps.clear();
+        
+        System.out.println(apps.size() + " clear");
+        
+        RequestContext.getCurrentInstance().update(":form_koszyk");
+
+        
+    }
 
    public void insert(App app)
    {
