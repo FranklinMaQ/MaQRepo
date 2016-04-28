@@ -12,6 +12,7 @@
     <body>
         <ui:composition>
             <h:form>     
+                <!--
                 <p:selectOneButton styleClass="buttons" id="caseSelection" value="#{switchBean.value}">  
                     <f:selectItem  itemLabel="Windows 7" itemValue="windows7" />  
                     <f:selectItem itemLabel="Windows 8.1" itemValue="windows8" />  
@@ -43,12 +44,36 @@
                     </pe:case>  
                 </pe:switch>  
 
-                <!--
+
                 <p:selectManyCheckbox id="basic"  value="#{checkboxViewBean.selectedTweaks}">
                     <f:selectItems value="#{checkboxViewBean.tweaks}" />
 
                 </p:selectManyCheckbox>
--->
+                -->
+                <p:dataTable id="multipleDT" widgetVar="tweaksTable" var="tweak" value="#{tweaksDataTable.tweaks}" selectionMode="multiple" selection="#{tweaksDataTable.selectedTweaks}" rowKey="#{tweak.path}">
+                    <f:facet name="header">
+                        Naciśnij lewy klawisz myszki z klawiszem CTRL, by zaznaczyć tweaka
+                    </f:facet>
+                    <p:column headerText="System" width="160"  filterBy="#{tweak.windowsVersion}" filterMatchMode="exact">
+                        <f:facet name="filter">
+                            <p:selectOneMenu onchange="PF('tweaksTable').filter()" >
+                                <f:selectItem itemLabel="Wszystkie" itemValue="#{null}" noSelectionOption="true" />
+                                <f:selectItem itemLabel="Windows 7" itemValue="windows7" />
+                                <f:selectItem itemLabel="Windows 8" itemValue="windows8" />
+                                <f:selectItem itemLabel="Windows 10" itemValue="windows10" />
+                            </p:selectOneMenu>
+                        </f:facet>
+                        <h:graphicImage id="graph" value="images/#{tweak.windowsVersion}.png" width="24" height="24"/>
+                        <p:outputLabel for="graph" value="   #{tweak.windowsVersion}"/>
+                    </p:column>
+                    <p:column style="text-align: center;" headerText="Opis tweaka"  filterBy="#{tweak.description}" filterMatchMode="contains">
+                        <h:outputText id="tweakName" value="#{tweak.description}" />
+                        <p:draggable for="tweakName" revert="true" helper="clone"/>
+                    </p:column>
+
+                </p:dataTable>
+
+
 
             </h:form>
         </ui:composition>

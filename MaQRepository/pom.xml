@@ -25,7 +25,17 @@
         <groupId>org.primefaces.extensions</groupId>
         <artifactId>primefaces-extensions</artifactId>
         <version>4.0.0</version>
+        
+        
     </dependency>
+    
+  <dependency>
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>all-themes</artifactId>
+    <version>1.0.10</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/src/main/resources/all-themes-1.0.10.jar</systemPath>
+</dependency>
 
         <dependency>
             <groupId>javax</groupId>
