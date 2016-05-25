@@ -17,35 +17,43 @@
                     <div id="action_center" align="center" style="width: 100%">
 
 
+                        <p:commandLink action="#{tabViewBean.ustaw}" update="tabView" title="Wpisz komunikat dla użytkownika" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()"  >
+                             <f:setPropertyActionListener target="#{tabViewBean.activeIndex}" value="2" />
+                            <p:graphicImage
+                                value="images/messageuser.png"
+                                width="180"
+                                height="180">
 
+                            </p:graphicImage>
+                        </p:commandLink>
 
                         <p:commandLink title="Usuń koszyk" action="#{orderListBean.removeAll}" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()" update=":form_koszyk" >
                             <p:graphicImage 
-                                            value="images/usun_koszyk.png"
-                                            width="180"
-                                            height="180">
-                              
+                                value="images/usun_koszyk.png"
+                                width="180"
+                                height="180">
+
                             </p:graphicImage>
                         </p:commandLink>
 
-                          <p:commandLink  title="Anuluj" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()"  >
+                        <p:commandLink  title="Anuluj" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()"  >
                             <p:graphicImage
-                                            value="images/close.png"
-                                            width="180"
-                                            height="180">
-                              
+                                value="images/close.png"
+                                width="180"
+                                height="180">
+
                             </p:graphicImage>
                         </p:commandLink>
 
-                         <h:commandLink  title="Zapisz projekt"   >
-                            
-                             <p:graphicImage
-                                            value="images/done.png"
-                                            width="180"
-                                            height="180">
-                              
+                        <h:commandLink  title="Zapisz projekt"   >
+
+                            <p:graphicImage
+                                value="images/done.png"
+                                width="180"
+                                height="180">
+
                             </p:graphicImage>
-                             <p:dataExporter id="scv" type="xml" target=":form_koszyk:cart_apps" fileName="apkidf" />
+                            <p:dataExporter id="scv" type="xml" target=":form_koszyk:cart_apps" fileName="apkidf" />
                         </h:commandLink>
 
                     </div>

@@ -50,14 +50,10 @@
 
                 </p:selectManyCheckbox>
                 -->
-                <p:dataTable id="multipleDT" widgetVar="tweaksTable" var="tweak" value="#{tweaksDataTable.tweaks}" rowStyleClass="#{tweaksDataTable.selectedTweaks.contains(tweak) ? 'selTweak' : null}" >
+                <p:dataTable id="multipleDT" widgetVar="tweaksTable" var="tweak" value="#{tweaksDataTable.tweaks}" selectionMode="multiple" selection="#{tweaksDataTable.selectedTweaks}" rowKey="#{tweak.path}">
                     <f:facet name="header">
                         Naciśnij lewy klawisz myszki z klawiszem CTRL, by zaznaczyć tweaka
                     </f:facet>
-                    <p:column style="width:20px">
-                        <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
-                        <p:draggable for="dragIcon" revert="true" helper="clone"/>
-                    </p:column>
                     <p:column headerText="System" width="160"  filterBy="#{tweak.windowsVersion}" filterMatchMode="exact">
                         <f:facet name="filter">
                             <p:selectOneMenu onchange="PF('tweaksTable').filter()" >
@@ -72,32 +68,12 @@
                     </p:column>
                     <p:column style="text-align: center;" headerText="Opis tweaka"  filterBy="#{tweak.description}" filterMatchMode="contains">
                         <h:outputText id="tweakName" value="#{tweak.description}" />
-                        <h:outputText value="#{tweaksDataTable.selectedTweaks.contains(tweak)}"/>
                         <p:draggable for="tweakName" revert="true" helper="clone"/>
                     </p:column>
 
                 </p:dataTable>
 
 
-                <h:form id="form_koszyk_tweakow">
-
-                    <p:contextMenu for="cart_tweaks" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
-                        <p:menuitem value="Usuń tweaka" update="cart_tweaks" icon="ui-icon-close" actionListener="#{tweaksDataTable.remove}" />
-                    </p:contextMenu>
-                    <p:dataTable id="cart_tweaks" var="cart_tweak" value="#{tweaksDataTable.selectedTweaks}" 
-                                 selection="#{tweaksDataTable.selectedTweak}" rowKey="#{cart_tweak.path}" selectionMode="single" >
-
-                        <p:column style="text-align: center;" exportable="false" width="110px;" >
-
-                            <h:outputText value="Koszyk (#{cart_tweak.description} aplikacji)"/>
-                            
-
-                        </p:column>
-                    </p:dataTable> 
-
-
-
-                </h:form>
 
             </h:form>
         </ui:composition>

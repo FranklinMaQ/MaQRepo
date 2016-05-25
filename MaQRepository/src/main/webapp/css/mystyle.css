@@ -210,6 +210,10 @@ myFieldset .ui-fieldset, .ui-fieldset {
 
 }
 
+.selTweak {
+    background-color: red !important;
+}
+
 .ui-fieldset .ui-state-default {
     background: transparent !important;
     border-color: transparent !important;

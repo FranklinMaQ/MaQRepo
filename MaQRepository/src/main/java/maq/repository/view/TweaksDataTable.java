@@ -11,12 +11,24 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import maq.repository.Tweak.Tweak;
+import org.primefaces.event.DragDropEvent;
 
-@ManagedBean(name="tweaksDataTable")
+@ManagedBean(name = "tweaksDataTable")
 @SessionScoped
-public class TweaksDataTable implements Serializable{
-    
+public class TweaksDataTable implements Serializable {
+
     private ArrayList<Tweak> tweaks;
+    private ArrayList<Tweak> droppedTweaks;
+    
+    
+  
+    public ArrayList<Tweak> getDroppedTweaks() {
+        return droppedTweaks;
+    }
+
+    public void setDroppedTweaks(ArrayList<Tweak> droppedTweaks) {
+        this.droppedTweaks = droppedTweaks;
+    }
 
     public ArrayList<Tweak> getTweaks() {
         return tweaks;
@@ -43,17 +55,34 @@ public class TweaksDataTable implements Serializable{
     }
     private Tweak selectedTweak;
     private ArrayList<Tweak> selectedTweaks;
-    
+
     @PostConstruct
     public void init() {
         Tweak x1 = new Tweak("Ukrywa pasek zadan", "windows7", "bat", "/tweaki/1.bat");
-         Tweak x3 = new Tweak("Udaszadan", "windows7", "bat", "/tweaki/3.bat");
+        Tweak x3 = new Tweak("Udaszadan", "windows7", "bat", "/tweaki/3.bat");
         Tweak x2 = new Tweak("Pokazuje pasek zadan", "windows10", "bat", "/tweaki/2.bat");
         tweaks = new ArrayList<>();
         tweaks.add(x1);
         tweaks.add(x2);
         tweaks.add(x3);
+        
+        selectedTweaks = new ArrayList<>();
+        selectedTweaks.add(x3);
+    }
+
+    public void onCarDrop(DragDropEvent ddEvent) {
+        Tweak tweak = ((Tweak) ddEvent.getData());
+
+        droppedTweaks.add(tweak);
+        tweaks.remove(tweak);
     }
     
-    
+     public void remove()
+   {
+       
+         selectedTweaks.remove(selectedTweak);
+        selectedTweak = null;
+     
+
+   }
 }

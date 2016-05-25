@@ -26,7 +26,7 @@ public class MultimediaAppsLoader implements IAppsLoader {
     public ArrayList<App> LoadApps() {      
         
       //  return uzytkowe;
-     
+        System.out.println("LOAD APPS STARTED");
       
         return XMLParser.ParseFile(apps_file);
         
