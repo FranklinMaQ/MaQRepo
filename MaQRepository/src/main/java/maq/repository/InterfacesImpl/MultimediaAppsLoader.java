@@ -31,6 +31,11 @@ public class MultimediaAppsLoader implements IAppsLoader {
         return XMLParser.ParseFile(apps_file);
         
     }
+
+    @Override
+    public ArrayList<App> LoadExtendedApps() {
+        return XMLParser.ParseFile("C:\\xml\\multimedia_extended.xml");
+    }
 }
     
 

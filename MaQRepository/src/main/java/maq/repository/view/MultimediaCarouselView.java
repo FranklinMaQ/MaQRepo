@@ -19,6 +19,25 @@ public class MultimediaCarouselView implements ICarouselView,Serializable {
      
     private ArrayList<App> apps;
     private IAppsLoader apps_loader;
+    private ArrayList<App> apps_extended;
+    private App selectedApp;
+    private App selectedExtendedApp;
+
+    public App getSelectedExtendedApp() {
+        return selectedExtendedApp;
+    }
+
+    public void setSelectedExtendedApp(App selectedExtendedApp) {
+        this.selectedExtendedApp = selectedExtendedApp;
+    }
+
+    public ArrayList<App> getApps_extended() {
+        return apps_extended;
+    }
+
+    public void setApps_extended(ArrayList<App> apps_extended) {
+        this.apps_extended = apps_extended;
+    }
     @Override
     public ArrayList<App> getApps() {
         return apps;
@@ -32,9 +51,10 @@ public class MultimediaCarouselView implements ICarouselView,Serializable {
     {
         apps_loader = new MultimediaAppsLoader();
         apps = apps_loader.LoadApps();
+          apps_extended = apps_loader.LoadExtendedApps();
     }
      
-    private App selectedApp;
+    
     
     @PostConstruct      // do wywalenia?
     public void init() {
