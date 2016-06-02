@@ -43,7 +43,7 @@ public class XPathParser {
         XPath xPath = XPathFactory.newInstance().newXPath();
 
         String expression = "/Repository/Apps/App";
-        System.out.println(expression);
+    
         Node node = (Node) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODE);
         NodeList nodeList = null;
 

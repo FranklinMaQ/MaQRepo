@@ -98,6 +98,7 @@
                         <p:tab title="Godfather Part I">
                             <div id="fluid_center" align="center" style="width: 100%">
 
+                               
 
                                 <pe:fluidGrid widgetVar="fluid"  fitWidth="true" id="fluid" hGutter="10" vGutter="10" style="">  
                                     <pe:fluidGridItem styleClass="ui-widget-header">
@@ -118,6 +119,54 @@
                                                 <ui:param name="genre" value="multimedia" />
                                             </ui:include>
                                         </ui:insert>
+
+
+                                    </pe:fluidGridItem>  
+                                    
+                                     <pe:fluidGridItem styleClass="ui-widget-header">
+
+                                        <ui:insert name="bezpieczenstwoCarousel" >
+                                            <ui:include src="Carousels/Official/Carousel.xhtml">
+                                                <ui:param name="title" value="Bezpieczeństwo" />
+                                                <ui:param name="genre" value="bezpieczenstwo" />
+                                            </ui:include>
+                                        </ui:insert>
+
+
+                                    </pe:fluidGridItem>  
+                                    
+                                       <pe:fluidGridItem styleClass="ui-widget-header">
+
+                                        <ui:insert name="internetCarousel" >
+                                            <ui:include src="Carousels/Official/Carousel.xhtml">
+                                                <ui:param name="title" value="Internet i komunikacja" />
+                                                <ui:param name="genre" value="internet" />
+                                            </ui:include>
+                                        </ui:insert>
+
+
+                                    </pe:fluidGridItem>  
+                                    
+                                      <pe:fluidGridItem styleClass="ui-widget-header">
+
+                                        <ui:insert name="biuroweCarousel" >
+                                            <ui:include src="Carousels/Official/Carousel.xhtml">
+                                                <ui:param name="title" value="Aplikacje biurowe" />
+                                                <ui:param name="genre" value="biurowe" />
+                                            </ui:include>
+                                        </ui:insert>
+                                             </pe:fluidGridItem>  
+                                            <pe:fluidGridItem styleClass="ui-widget-header">
+
+                                        <ui:insert name="gryCarousel" >
+                                            <ui:include src="Carousels/Official/Carousel.xhtml">
+                                                <ui:param name="title" value="Gry i rozrywka" />
+                                                <ui:param name="genre" value="gry" />
+                                            </ui:include>
+                                        </ui:insert>
+
+
+                                 
 
 
                                     </pe:fluidGridItem>  
@@ -166,6 +215,8 @@
                                 <h:outputText id="display" value="#{editorView.text}" escape="true" />
                              
                             </h:form> 
+                            
+                           
                            
                         </p:tab>
 

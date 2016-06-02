@@ -48,7 +48,7 @@ public class OrderListBean implements Serializable {
     {
         apps.clear();
         
-        System.out.println(apps.size() + " clear");
+      
         
         RequestContext.getCurrentInstance().update(":form_koszyk");
 
@@ -57,11 +57,11 @@ public class OrderListBean implements Serializable {
 
    public void insert(App app)
    {
-       System.out.println("Dodano apke : " + apps.size());
+     
        
        if(!this.apps.contains(app))
        this.apps.add(app);
-       System.out.println("Dodano apke : " + apps.size());
+    
    }
    
    public void removeByName(String name)
@@ -84,11 +84,7 @@ public class OrderListBean implements Serializable {
        
          apps.remove(selectedApp);
         selectedApp = null;
-      // this.apps.remove(app);
-       
-      // RemoveInformation(app.getName());
-       
-      // System.out.println("Ilosc aplikacji : " + apps.size());
+  
 
    }
     
@@ -101,7 +97,7 @@ public class OrderListBean implements Serializable {
         
         
         String context = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-         System.out.println("TUTAJ" + context);
+       
            
         
     }
@@ -116,7 +112,7 @@ public class OrderListBean implements Serializable {
      public void onRowReorder(ReorderEvent event) {
        
       
-      //   System.out.println(events);
+    
          
          FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);

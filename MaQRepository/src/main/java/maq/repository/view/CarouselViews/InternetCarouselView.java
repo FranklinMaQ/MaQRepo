@@ -1,5 +1,5 @@
 
-package maq.repository.view;
+package maq.repository.view.CarouselViews;
 
 
 import java.io.Serializable;
@@ -10,12 +10,14 @@ import javax.faces.bean.ViewScoped;
 import maq.repository.App.App;
 import maq.repository.Interfaces.IAppsLoader;
 import maq.repository.Interfaces.ICarouselView;
-import maq.repository.InterfacesImpl.MultimediaAppsLoader;
+import maq.repository.InterfacesImpl.BezpieczenstwoAppsLoader;
+import maq.repository.InterfacesImpl.InternetAppsLoader;
+
 
 
 @ManagedBean
 @ViewScoped
-public class MultimediaCarouselView implements ICarouselView,Serializable {
+public class InternetCarouselView implements ICarouselView,Serializable {
      
     private ArrayList<App> apps;
     private IAppsLoader apps_loader;
@@ -47,9 +49,9 @@ public class MultimediaCarouselView implements ICarouselView,Serializable {
         this.apps = apps;
     }
    
-    public MultimediaCarouselView()
+    public InternetCarouselView()
     {
-        apps_loader = new MultimediaAppsLoader();
+        apps_loader = new InternetAppsLoader();
         apps = apps_loader.LoadApps();
           apps_extended = apps_loader.LoadExtendedApps();
     }
@@ -58,7 +60,7 @@ public class MultimediaCarouselView implements ICarouselView,Serializable {
     
     @PostConstruct      // do wywalenia?
     public void init() {
-        apps_loader = new MultimediaAppsLoader();
+        apps_loader = new InternetAppsLoader();
         apps = apps_loader.LoadApps();
      
     }

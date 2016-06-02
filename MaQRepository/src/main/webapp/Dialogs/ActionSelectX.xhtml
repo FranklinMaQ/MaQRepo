@@ -12,19 +12,17 @@
     <body>
         <ui:composition>
 
-            <p:dialog header="" id="action_dialog" widgetVar="action_dialog" modal="true" width="100%" height="205" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="" id="action_dialog" widgetVar="action_dialog" modal="true" width="100%" height="215" showEffect="fade" hideEffect="fade" resizable="false">
                 <h:form id="form_action_dialog">
                     <div id="action_center" align="center" style="width: 100%">
-
-
-
 
 
                         <div class="ui-grid">
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-3">
+
                                     <p:commandLink action="#{tabViewBean.ustaw}" update="tabView" title="Wpisz komunikat dla użytkownika" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()"  >
-                                        <f:setPropertyActionListener target="#{tabViewBean.activeIndex}" value="3" />
+                                        <f:setPropertyActionListener target="#{tabViewBean.activeIndex}" value="2" />
                                         <p:graphicImage
                                             value="images/messageuser.png"
                                             width="180"
@@ -32,12 +30,14 @@
 
                                         </p:graphicImage>
                                     </p:commandLink>
+
                                     <div style="color: white;">
                                         <alert-title>Komunikat dla użytkownika</alert-title>
                                     </div>
 
                                 </div>
                                 <div class="ui-grid-col-3"> 
+
                                     <p:commandLink title="Usuń koszyk" action="#{orderListBean.removeAll}" onsuccess="BackgroundUnBlur(); PF('action_dialog').hide()" update=":form_koszyk" >
                                         <p:graphicImage 
                                             value="images/usun_koszyk.png"
@@ -74,7 +74,7 @@
 
                                 <div class="ui-grid-col-3"> 
 
-                                    <h:commandLink onclick="window.open('http://localhost:8080/MaQRepository/images/MaQRepository.exe', '_blank');  window.focus();" title="Zapisz projekt"   >
+                                    <p:commandLink title="Zapisz projekt"   >
 
                                         <p:graphicImage
                                             value="images/done.png"
@@ -83,13 +83,23 @@
 
                                         </p:graphicImage>
                                         <p:dataExporter id="scv" type="xml" target=":form_koszyk:cart_apps" fileName="apkidf" />
-                                    </h:commandLink>
+                                    </p:commandLink>
                                     <div style="color: white;">
                                         Zapisz projekt
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </h:form>
 

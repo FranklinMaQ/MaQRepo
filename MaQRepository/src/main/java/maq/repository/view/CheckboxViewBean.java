@@ -20,10 +20,7 @@ public class CheckboxViewBean {
     public void setSelectedTweaks(String[] selectedTweaks) {
         this.selectedTweaks = selectedTweaks;
         
-        for(String x : selectedTweaks)
-        {
-            System.out.println(x + " tweak");
-        }
+       
     }
     private ArrayList<String> tweaks;  
 

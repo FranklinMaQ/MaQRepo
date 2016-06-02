@@ -20,7 +20,7 @@
         <ui:composition>
             <h:form id="form_#{genre}">
                 <div id='#{genre}DivKaruzela'>
-                    <p:carousel value="#{genreBean.beanMap[genre].apps}" headerText="#{title}" var="app" itemStyle="" responsive="false" style="width: 850px;">
+                    <p:carousel  value="#{genreBean.beanMap[genre].apps}" headerText="#{title}" var="app" responsive="false" style="width: 850px;">
                         <p:panelGrid id="#{genre}_panelitem" >
                             <ui:insert name="#{genre}CarouselItem" >
                                 <ui:include src="Item/CarouselItem.xhtml" >
@@ -82,13 +82,17 @@
 
 
             </h:form>
+            
             <h:form id="form_ext_#{genre}">
+              
                 <p:fieldset widgetVar="#{genre}_fieldset" id="#{genre}_fieldset" legend="Pokaż więcej aplikacji" toggleable="true" collapsed="true" toggleSpeed="5" style="text-align: center; width: 800px;">
+                   
                     <p:ajax event="toggle" onstart="PF('fluid').layout(); ">
 
                     </p:ajax>
-
+  <div id="#{genre}DivFieldset">
                     <p:dataGrid id="extendedApps_#{genre}" var="extApp" value="#{genreBean.beanMap[genre].apps_extended}" columns="3">
+                      
                         <p:panelGrid>
                             <p:row>
                                 <p:column rowspan="2">
@@ -115,13 +119,13 @@
                                     </p:commandButton>                   
                                 </p:column>
                             </p:row>
- <p:row>
-                <p:column>
-                    <p:commandButton action="#{orderListBean.insert(extApp)}" update=":form_koszyk" oncomplete="ShowSuccessNotification()" icon="ui-icon-plus" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
-                      
-                    </p:commandButton>
-                </p:column>
-            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <p:commandButton action="#{orderListBean.insert(extApp)}" update=":form_koszyk" oncomplete="ShowSuccessNotification()" icon="ui-icon-plus" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
+
+                                    </p:commandButton>
+                                </p:column>
+                            </p:row>
 
 
 
@@ -131,6 +135,7 @@
 
 
                     </p:dataGrid>
+      </div>
                     <p:dialog header="App Info" widgetVar="#{genre}ExtendedAppDialog"  draggable="false" showEffect="fade" hideEffect="fade" resizable="false" style="border-color: silver; border-width: 1px; background:rgba(15,64,110,0.7) !important;">
 
                         <p:outputPanel id="#{genre}ExtendedAppDetail" style="width: 800px;">
@@ -169,13 +174,14 @@
                         </p:outputPanel>
 
                     </p:dialog>
+                 
                 </p:fieldset>
 
 
 
             </h:form>
 
-
+ 
 
 
         </ui:composition>

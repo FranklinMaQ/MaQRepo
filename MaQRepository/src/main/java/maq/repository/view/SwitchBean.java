@@ -21,6 +21,6 @@ public class SwitchBean {
     
     public void listener(String case_)
     {
-        System.out.println(case_);
+       
     }
 } 

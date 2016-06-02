@@ -18,7 +18,7 @@ public class ActionDialogBean implements Serializable {
 
     public void setText(String text) {
         this.text = text;
-       System.out.println("USTAWIONO");
+   
     }
     
     

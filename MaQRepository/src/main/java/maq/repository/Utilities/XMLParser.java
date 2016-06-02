@@ -45,7 +45,7 @@ public class XMLParser {
             Document doc = dBuilder.parse(parsed_file);
             doc.getDocumentElement().normalize();   // opcjonalne
 
-            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+       
             NodeList nList = doc.getElementsByTagName("App");   // lista Appek
             System.err.println(nList.getLength());
 
@@ -60,7 +60,7 @@ public class XMLParser {
                     
                     linki = xpp.Parse(apps_file, getValueOfElement(e, "Name"));
                     
-                    System.out.println("TERAZ: " + linki.size());
+               
                     app = new App(getValueOfElement(e, "Name"),
                             getValueOfElement(e, "Short_Name"),
                             getValueOfElement(e, "Publisher"),

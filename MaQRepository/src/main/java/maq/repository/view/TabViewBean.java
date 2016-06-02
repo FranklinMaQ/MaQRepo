@@ -19,12 +19,12 @@ public class TabViewBean implements Serializable {
 
     public void setActiveIndex(int activeIndex) {
         this.activeIndex = activeIndex;
-        System.out.println("ACTIVE: " + activeIndex);
+      
     }
     
     public void ustaw() {
      
-        System.out.println("ACTIVE: " + activeIndex);
+      
     }
 
    

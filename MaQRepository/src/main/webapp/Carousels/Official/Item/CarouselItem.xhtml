@@ -42,17 +42,9 @@
                 <p:column>
                     <p:commandButton update=":tabView:fluid:form_#{parent}:#{parent}AppDetail" oncomplete="BackgroundBlur();PF('#{parent}AppDialog').show();" icon="ui-icon-info" style=" box-shadow: 2px 2px 10px lightblue; border-color: lightblue; border-width: 1px; background-color: transparent !important;">
 
-                        <c:choose>
-                            <c:when test="#{parent eq 'uzytkowe'}">
-                                <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
-                            </c:when>
-                            <c:when test="#{parent eq 'multimedia'}">
-                                <f:setPropertyActionListener value="#{app}" target="#{multimediaCarouselView.selectedApp}" />
-                            </c:when>
-                            <c:otherwise>
-                                <p>cos sie zepsulo nie bylo mnie slychac</p>
-                            </c:otherwise>
-                        </c:choose>
+                  
+                                <f:setPropertyActionListener value="#{app}" target="#{genreBean.beanMap[parent].selectedApp}" />
+                         
 
                     </p:commandButton>
                 </p:column>
@@ -60,17 +52,9 @@
             <p:row>
                 <p:column>
                     <p:commandButton action="#{orderListBean.insert(app)}" update=":form_koszyk" oncomplete="ShowSuccessNotification()" icon="ui-icon-plus" style="border-color: lightblue; border-width: 1px; background-color: transparent !important;">
-                        <c:choose>
-                            <c:when test="#{parent eq 'uzytkowe'}">
-                                <f:setPropertyActionListener value="#{app}" target="#{uzytkoweCarouselView.selectedApp}" />
-                            </c:when>
-                            <c:when test="#{parent eq 'multimedia'}">
-                                <f:setPropertyActionListener value="#{app}" target="#{multimediaCarouselView.selectedApp}" />
-                            </c:when>
-                            <c:otherwise>
-                                <p>cos sie zepsulo nie bylo mnie slychac</p>
-                            </c:otherwise>
-                        </c:choose>
+                      
+                                <f:setPropertyActionListener value="#{app}" target="#{genreBean.beanMap[parent].selectedApp}" />
+                         
                     </p:commandButton>
                 </p:column>
             </p:row>

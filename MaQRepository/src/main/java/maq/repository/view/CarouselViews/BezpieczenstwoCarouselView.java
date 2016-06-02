@@ -1,32 +1,28 @@
 
-package maq.repository.view;
+package maq.repository.view.CarouselViews;
 
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import maq.repository.App.App;
 import maq.repository.Interfaces.IAppsLoader;
 import maq.repository.Interfaces.ICarouselView;
-import maq.repository.InterfacesImpl.UzytkoweAppsLoader;
+import maq.repository.InterfacesImpl.BezpieczenstwoAppsLoader;
+
 
 
 @ManagedBean
 @ViewScoped
-public class UzytkoweCarouselView implements ICarouselView,Serializable {
+public class BezpieczenstwoCarouselView implements ICarouselView,Serializable {
      
     private ArrayList<App> apps;
+    private IAppsLoader apps_loader;
     private ArrayList<App> apps_extended;
-     private IAppsLoader apps_loader;
-     private App selectedExtendedApp;
+    private App selectedApp;
+    private App selectedExtendedApp;
 
     public App getSelectedExtendedApp() {
         return selectedExtendedApp;
@@ -43,7 +39,6 @@ public class UzytkoweCarouselView implements ICarouselView,Serializable {
     public void setApps_extended(ArrayList<App> apps_extended) {
         this.apps_extended = apps_extended;
     }
-   
     @Override
     public ArrayList<App> getApps() {
         return apps;
@@ -53,18 +48,18 @@ public class UzytkoweCarouselView implements ICarouselView,Serializable {
         this.apps = apps;
     }
    
-    public UzytkoweCarouselView()
+    public BezpieczenstwoCarouselView()
     {
-        apps_loader = new UzytkoweAppsLoader();
+        apps_loader = new BezpieczenstwoAppsLoader();
         apps = apps_loader.LoadApps();
-        apps_extended = apps_loader.LoadExtendedApps();
+          apps_extended = apps_loader.LoadExtendedApps();
     }
      
-    private App selectedApp;
+    
     
     @PostConstruct      // do wywalenia?
     public void init() {
-        apps_loader = new UzytkoweAppsLoader();
+        apps_loader = new BezpieczenstwoAppsLoader();
         apps = apps_loader.LoadApps();
      
     }

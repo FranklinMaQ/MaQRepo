@@ -56,6 +56,14 @@ h1 {
     line-height: 26.4px;
 }
 
+alert-title {
+    font-family: 'Century Gothic';
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+   
+}
+
 x {
     font-family: 'Century Gothic';
     font-size: 40px;
@@ -141,7 +149,46 @@ x {
 
 .ui-carousel-header {
     background-color: #0277BD !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: 1px 1px 5px lightblue;
 
+}
+
+.multimedia.ui-carousel-header {
+    background-color: #027700 !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: 1px 1px 5px lightblue;
+
+}
+
+#internet.ui-carousel-header {
+    background-color: #0277FF !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: 1px 1px 5px lightblue;
+
+}
+
+#bezpieczenstwo.ui-carousel-header {
+    background-color: #0277BD !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: 1px 1px 5px lightblue;
+
+}
+
+#biurowe.ui-carousel-header {
+    background-color: #0277BD !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: 1px 1px 5px lightblue;
+
+}
+
+#gry.ui-carousel-header {
+    background-color: #0277BD !important;
     background-image: none !important;
     border-color: transparent !important;
     box-shadow: 1px 1px 5px lightblue;

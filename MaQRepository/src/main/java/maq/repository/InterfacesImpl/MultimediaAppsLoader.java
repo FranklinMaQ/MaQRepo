@@ -5,6 +5,7 @@
  */
 package maq.repository.InterfacesImpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +19,7 @@ import org.xml.sax.SAXException;
  *
  * @author MaQ
  */
-public class MultimediaAppsLoader implements IAppsLoader {
+public class MultimediaAppsLoader implements IAppsLoader, Serializable {
 
     private String apps_file = "C:\\xml\\multimedia.xml";
 
@@ -26,7 +27,7 @@ public class MultimediaAppsLoader implements IAppsLoader {
     public ArrayList<App> LoadApps() {      
         
       //  return uzytkowe;
-        System.out.println("LOAD APPS STARTED");
+    
       
         return XMLParser.ParseFile(apps_file);
         

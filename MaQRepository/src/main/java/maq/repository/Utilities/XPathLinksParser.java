@@ -81,7 +81,7 @@ public class XPathLinksParser {
                 
             }
             
-            System.out.println("MAPA: " + linki.size());
+          
             
         } catch (XPathExpressionException e) {
             e.printStackTrace();
