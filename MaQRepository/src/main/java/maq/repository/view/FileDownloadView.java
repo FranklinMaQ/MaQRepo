@@ -6,6 +6,7 @@
 package maq.repository.view;
 
 import java.io.InputStream;
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -19,31 +20,37 @@ import org.primefaces.model.StreamedContent;
 @ManagedBean
 @RequestScoped
 public class FileDownloadView {
-     
+
     private StreamedContent file;
+
+    public FileDownloadView() {
+        
+        EditorView ev = (EditorView)getBean("editorView");
+        
+        System.out.println(ev.getText() + " sdsadsa");
+      //  InputStream stream = this.getClass().getResourceAsStream("/images/kodi.png");
+      //  file = new DefaultStreamedContent(stream, "image/png", "kodi.png");
+
+    }
+    
+     public static Object getBean(String beanName) {
+        Object bean = null;
+        FacesContext fc = FacesContext.getCurrentInstance();
+        if (fc != null) {
+            ELContext elContext = fc.getELContext();
+            bean = elContext.getELResolver().getValue(elContext, null, beanName);
+        }
+
+        return bean;
+    }
+
 
     public void setFile(StreamedContent file) {
         this.file = file;
     }
-     
-    public FileDownloadView() {    
-      
-         
-    }
-    
-    public void instantiateFile(){
-    InputStream stream = this.getClass().getResourceAsStream("/images/kodi.png");
-   file = new DefaultStreamedContent(stream, "image/png", "kodi.png");   
-}
- 
+
     public StreamedContent getFile() {
-        if(file == null) {
-            System.out.println("jest null");
-     instantiateFile();
-     
-   }
-   return file;
+        return file;
     }
-    
-  
+
 }

@@ -11,53 +11,14 @@
     </h:head>
     <body>
         <ui:composition>
-            <h:form>     
-                <!--
-                <p:selectOneButton styleClass="buttons" id="caseSelection" value="#{switchBean.value}">  
-                    <f:selectItem  itemLabel="Windows 7" itemValue="windows7" />  
-                    <f:selectItem itemLabel="Windows 8.1" itemValue="windows8" />  
-                    <f:selectItem itemLabel="Windows 10" itemValue="windows10" />  
-
-
-                    <p:ajax update="switch" process="@this" />  
-                </p:selectOneButton>  
-
-                <p:separator />  
-
-                <pe:switch id="switch" value="#{switchBean.value}">  
-                    <pe:defaultCase>  
-                        Case: Default  
-                    </pe:defaultCase>  
-
-                    <pe:case value="windows7">  
-                        Case: <p:commandButton id="case1button" actionListener="#{switchBean.listener('case1')}"   
-                                               value="Call listener with 'case1'" />   
-                    </pe:case>  
-
-                    <pe:case value="windows8">  
-                        Case: <p:commandButton id="case2button" actionListener="#{switchBean.listener('case2')}"   
-                                               value="Call listener with 'case2'"  />  
-                    </pe:case>  
-
-                    <pe:case value="windows10">  
-                        Case: Null  
-                    </pe:case>  
-                </pe:switch>  
-
-
-                <p:selectManyCheckbox id="basic"  value="#{checkboxViewBean.selectedTweaks}">
-                    <f:selectItems value="#{checkboxViewBean.tweaks}" />
-
-                </p:selectManyCheckbox>
-                -->
-                <p:dataTable id="multipleDT" widgetVar="tweaksTable" var="tweak" value="#{tweaksDataTable.tweaks}" rowStyleClass="#{tweaksDataTable.selectedTweaks.contains(tweak) ? 'selTweak' : null}" >
+            <h:form id='bigform'>     
+          
+                <p:dataTable id="multipleDT" widgetVar="tweaksTable" var="tweak" selectionMode="single" selection="#{tweaksDataTable.selectedTweak}" rowKey="#{tweak.path}" value="#{tweaksDataTable.tweaks}" rowStyleClass="#{tweaksDataTable.selectedTweaks.contains(tweak) ? 'selTweak' : null}" >
+                    <p:ajax event="rowSelect" listener="#{tweaksDataTable.onRowSelect}" update="tabView:bigform" />
+                  
                     <f:facet name="header">
                         Naciśnij lewy klawisz myszki z klawiszem CTRL, by zaznaczyć tweaka
-                    </f:facet>
-                    <p:column style="width:20px">
-                        <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
-                        <p:draggable for="dragIcon" revert="true" helper="clone"/>
-                    </p:column>
+                    </f:facet>                   
                     <p:column headerText="System" width="160"  filterBy="#{tweak.windowsVersion}" filterMatchMode="exact">
                         <f:facet name="filter">
                             <p:selectOneMenu onchange="PF('tweaksTable').filter()" >

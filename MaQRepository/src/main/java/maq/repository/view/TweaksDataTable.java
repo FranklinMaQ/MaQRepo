@@ -8,10 +8,14 @@ package maq.repository.view;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import maq.repository.Tweak.Tweak;
 import org.primefaces.event.DragDropEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 @ManagedBean(name = "tweaksDataTable")
 @SessionScoped
@@ -67,7 +71,7 @@ public class TweaksDataTable implements Serializable {
         tweaks.add(x3);
         
         selectedTweaks = new ArrayList<>();
-        selectedTweaks.add(x3);
+        
     }
 
     public void onCarDrop(DragDropEvent ddEvent) {
@@ -85,4 +89,20 @@ public class TweaksDataTable implements Serializable {
      
 
    }
+     
+      public void onRowSelect(SelectEvent event) {
+       Tweak x = ((Tweak) event.getObject());
+       
+       if(!selectedTweaks.contains(x))
+       {
+           selectedTweaks.add(x);
+       }
+       else
+       {
+           selectedTweaks.remove(x);
+       }
+       
+    }
+ 
+  
 }

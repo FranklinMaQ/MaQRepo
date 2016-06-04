@@ -258,7 +258,11 @@ myFieldset .ui-fieldset, .ui-fieldset {
 }
 
 .selTweak {
-    background-color: red !important;
+    background-color: lightgreen !important;
+}
+
+.unselTweak {
+    background-color: white !important;
 }
 
 .ui-fieldset .ui-state-default {
